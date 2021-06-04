@@ -1,6 +1,9 @@
 {
   "name": "ngx-http-client-service",
   "version": "0.0.1",
+  "scripts": {
+    "b:doc": "npx compodoc -p tsconfig.doc.json"
+  },
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",
