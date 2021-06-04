@@ -8,7 +8,12 @@ import { HttpParamType, HttpHeadersType, HTTPOptionParamArgumentType, HttpOption
 @Injectable({
   providedIn: 'root'
 })
+
+/** HttpOptionsService where all http options creations methods are defined
+ *  It can contains http params and http headers creation functionality
+ */
 export class HttpOptionsService {
+  
   /**
    * @description Creates an instance of http options service.
    */

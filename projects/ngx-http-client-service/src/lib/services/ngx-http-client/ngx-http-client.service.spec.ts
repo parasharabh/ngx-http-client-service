@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgxHttpClientServiceService } from './ngx-http-client-service.service';
+import { NgxHttpClientService } from './ngx-http-client.service';
 
 describe('NgxHttpClientServiceService', () => {
-  let service: NgxHttpClientServiceService;
+  let service: NgxHttpClientService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgxHttpClientServiceService);
+    service = TestBed.inject(NgxHttpClientService);
   });
 
   it('should be created', () => {
