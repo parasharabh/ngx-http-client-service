@@ -20,30 +20,30 @@ export class HttpOptionsService {
   constructor() { }
 
   /**
-   * @description generateHTTPParams is a common method.
+   * @description appendHTTPParams is a common method.
    * @param param_component contains an array of param_component_object_type : HttpParamType
    * @returns returns constructed httpParameters of type HttpParamType
    */
-  public generateHTTPParams(param_component: HttpParamType[]): HttpParams {
+  public appendHTTPParams(param_component: HttpParamType[]): HttpParams {
     let httpParam = new HttpParams();
     param_component.forEach((param) => {
-      if ((!httpParam.has(param.name)) && param.value) {
-        httpParam = httpParam.append(param.name, param.value);
+      if ((!httpParam.has(param.param_name)) && param.param_value) {
+        httpParam = httpParam.append(param.param_name, param.param_value.toString());
       }
     });
     return httpParam;
   }
 
   /**
-   * @description generateHTTPHeaders is a common method.
+   * @description appendHTTPHeaders is a common method.
    * @param header_component contains an array of header_component_object_type : HttpPathHeaderType
    * @returns returns constructed httpParameters of type HttpParamType
    */
-  public generateHTTPHeader(header_component: HttpHeadersType[]): HttpHeaders {
+  public appendHTTPHeader(header_component: HttpHeadersType[]): HttpHeaders {
     let httpHeader = new HttpHeaders();
     header_component.forEach((header) => {
-      if ((!httpHeader.has(header.name)) && header.value) {
-        httpHeader = httpHeader.append(header.name, header.value);
+      if ((!httpHeader.has(header.header_name)) && header.header_value) {
+        httpHeader = httpHeader.append(header.header_name, header.header_value);
       }
     });
     return httpHeader;
@@ -52,9 +52,9 @@ export class HttpOptionsService {
   /**
    * @description provides the http options.
    * @param httPathParameters contains params of type httpPamaOptionsType.
-   * @returns returns generated http options.
+   * @returns returns appendd http options.
    */
-  public generateHttpOptions(httpOptionsParameters: HTTPOptionParamArgumentType): HttpOptionsParamType {
+  public appendHttpOptions(httpOptionsParameters: HTTPOptionParamArgumentType): HttpOptionsParamType {
     if (!httpOptionsParameters) {
       httpOptionsParameters = new HTTPOptionParamArgumentType();
       httpOptionsParameters.headers = [];
@@ -62,14 +62,26 @@ export class HttpOptionsService {
     }
     const httpOptions = new HttpOptionsParamType();
     if (httpOptionsParameters.params) {
-      httpOptions.params = this.generateHTTPParams(httpOptionsParameters.params);
+      httpOptions.params = this.appendHTTPParams(httpOptionsParameters.params);
     } else {
-      httpOptions.params = this.generateHTTPParams([]);
+      httpOptions.params = this.appendHTTPParams([]);
     }
     if (httpOptionsParameters.headers) {
-      httpOptions.headers = this.generateHTTPHeader(httpOptionsParameters.headers);
+      httpOptions.headers = this.appendHTTPHeader(httpOptionsParameters.headers);
     } else {
-      httpOptions.headers = this.generateHTTPHeader([]);
+      httpOptions.headers = this.appendHTTPHeader([]);
+    }
+    if (httpOptionsParameters.observe) {
+      httpOptions.observe = httpOptionsParameters.observe;
+    }
+    if (httpOptionsParameters.reportProgress) {
+      httpOptions.reportProgress = httpOptionsParameters.reportProgress;
+    }
+    if (httpOptionsParameters.responseType) {
+      httpOptions.responseType = httpOptionsParameters.responseType;
+    }
+    if(httpOptionsParameters.withCredentials) {
+      httpOptions.withCredentials = httpOptionsParameters.withCredentials;
     }
     return httpOptions;
   }

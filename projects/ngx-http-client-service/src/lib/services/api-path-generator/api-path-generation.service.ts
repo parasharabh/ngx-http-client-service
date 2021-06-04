@@ -1,4 +1,4 @@
-import { APIPathGenerationConstants } from '../constants/api-path-generation.constants';
+import { APIUrlConstants } from '../../constants/api-path-generation.constants';
 import { Injectable } from '@angular/core';
 
 /**
@@ -8,10 +8,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 
-/** Common Library where all reusable and repeated functionalities can be managed
+/** api url generator Service all reusable and repeated functionalities can be managed
  * It can contains common methods and common methods related params.
  */
-export class APIPathGenerationLibrary {
+export class APIUrlService {
   
   /**
    * @description creates an instance of APIPathGenerationLibrary
@@ -20,15 +20,15 @@ export class APIPathGenerationLibrary {
   }
 
   // Common Constants
-  private BASE = APIPathGenerationConstants.BASE;
-  private END = APIPathGenerationConstants.END;
+  private BASE = APIUrlConstants.BASE;
+  private END = APIUrlConstants.END;
 
   /**
-   * @description generatePath is a common method.
+   * @description constructPath is a common method.
    * @param pathComponent contains an array of string.
    * @returns returns constructed api path url.
    */
-  public generatePath(pathComponent: string[]): string {
+  public constructPath(pathComponent: string[]): string {
     let path = this.BASE;
     pathComponent.forEach((arg: string) => {
       if (arg === this.END) {
