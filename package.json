@@ -1,7 +1,30 @@
 {
   "name": "ngx-http-client-service",
-  "author": "Abhishek Parashar",
+  "author": "Abhishek Parashar <parashar.abh@gmail.com>",
   "version": "9.0.0",
+  "keywords": [
+    "Angular 9",
+    "ng",
+    "angular-service",
+    "aot",
+    "aot-compatible",
+    "httpClient",
+    "REST API",
+    "async",
+    "GET",
+    "PUT",
+    "POST",
+    "DELETE"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/parasharabh/ngx-http-client-service"
+  },
+  "bugs": {
+    "url": "https://github.com/parasharabh/ngx-http-client-service/issues"
+  },
+  "homepage": "https://github.com/parasharabh/ngx-http-client-service#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
