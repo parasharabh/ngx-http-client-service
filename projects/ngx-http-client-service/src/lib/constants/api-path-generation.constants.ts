@@ -1,4 +1,4 @@
-export class APIPathGenerationConstants {
+export class APIUrlConstants {
     public static BASE = '';
     public static END = '/';
     public static QUERY_SPECIFIER = '?';
