@@ -6,12 +6,13 @@ Angular 9  service for http-client-service.
 
 ```bash
 npm install ngx-http-client-service --save
+```
 
+# Uses
 
 Add the http-client service to your `app.module.ts` or in the module where you want to add as a provider:
 
 ```typescript
-
 import { NgxHttpClientService } from 'ngx-http-client-service';
 
 @NgModule({
@@ -22,14 +23,20 @@ import { NgxHttpClientService } from 'ngx-http-client-service';
 export class AppModule { }
 ```
 
-Then, import and inject it into a service constructor:
+Then, import and inject it into a service constructor.
 
 ```typescript
-export class UserService() {
-  constructor( private ngxHttpClientService: NgxHttpClientService ) { }
-  // This method needs to be defined in your service file. The service file will expose this method to your component.
+import { Injectable } from '@angular/core';
 
-  getUserInfo(): Observable<T> {
+@Injectable({
+  providedIn: 'root',
+})
+
+export class UserApiService() {
+  constructor( private ngxHttpClientService: NgxHttpClientService ) { }
+  // This method needs to be defined in your service file. The User service file will expose requestUserInfo method to your component.
+
+  requestUserInfo(): Observable<UserModel> {
 
     const path_params: string[] = ['api', 'v1', 'user', 'info'];
     const body = {};
@@ -63,6 +70,32 @@ export class UserService() {
   }
 }
 ```
+Then use the UserApiService in respective component.
+
+``` typescript
+
+import { UserApiService } from 'src/app/services/UserApiService.service';
+
+@Component({
+  selector: 'user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
+})
+export class UserComponent {
+  
+  constructor(
+    private userApiService: UserApiService
+  ) {}
+
+  getUserInfo(): void {
+    this.userApiService.requestUserInfo().subscribe((successResponse: ) => {
+      
+    }, (error) => {
+
+    })
+  }
+}
+```
 
 That's it! See how easy it is.
 Now just imagine testing it.
@@ -70,16 +103,19 @@ All of your code structure will be almost same except the data will change which
 The rest of calling of the methods will remain same. 
 You can use the response as the objects only.
 
-# classes
+# Classes
+
 ```typescript
 class HttpParamType {
     param_name: string;
     param_value: string | number | boolean | ReadonlyArray<string | number | boolean>;
 }
+
 class HttpHeadersType {
     header_name: string;
     header_value: string | string[];
 }
+
 class HttpOptionsParamType {
     params?: HttpParams;
     headers?: HttpHeaders;
@@ -88,6 +124,7 @@ class HttpOptionsParamType {
     responseType?: any;
     withCredentials?: boolean;
 }
+
 class HTTPOptionParamArgumentType {
     params?: HttpParamType[];
     headers?: HttpHeadersType[];
@@ -95,19 +132,22 @@ class HTTPOptionParamArgumentType {
     reportProgress?: boolean;
     responseType?: any;
     withCredentials?: boolean;
+}
 ```
 # Methods
 
-This get method will expose `get` method of http client.
-
 ## get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
+### GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
+(for example User service, The User service will be used by the UserComponent).
+
+### Example:
 ```typescript
-export class UserService() {
+export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
-  getMethodInServiceFileExample(): Observable<T> {
+  getMethodInServiceFileExample(): Observable<UserResponseModel> {
     const path_params: string[] = ['api', 'v1', 'user', 'info'];
     const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
 
@@ -132,23 +172,26 @@ export class UserService() {
                                     { param_name: 'count', param_value: 50 },
                                   ];
 
-    return this.ngxHttpClientService.get(path_params, http_options_params);
+    return this.ngxHttpClientService.get(path_params, http_options_params)
+    .pipe(map(response: any) => response as UserResponseModel);
   }
 }
 ```
 
-This post method will expose `post` method of http client.
+## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+### POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
+(for example User service, The User service will be used by the UserComponent).
 
+### Example:
 ```typescript
-export class UserService() {
+export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
-  updateMethodInServiceFileExample(): Observable<T> {
+  updateMethodInServiceFileExample(): Observable<UserResponseModel> {
     const path_params: string[] = ['api', 'v1', 'user', 'info'];
-    const body = {};
+    const body = {userId: 1};
     const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
 
     // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
@@ -172,21 +215,26 @@ export class UserService() {
                                     { param_name: 'count', param_value: 50 },
                                   ];
 
-    return this.ngxHttpClientService.post(path_params, body, http_options_params);
+    return this.ngxHttpClientService.post(path_params, body, http_options_params)
+    .pipe(
+          map((response: any) => response as UserResponseModel)
+        );
   }
 }
 ```
 
-This put method will expose `put` method of http client.
+## put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
-## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+### PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
+(for example User service, The User service will be used by the UserComponent).
 
+### Example:
 ```typescript
-export class UserService() {
+export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
-  updateMethodInServiceFileExample(): Observable<T> {
+  updateMethodInServiceFileExample(): Observable<UserResponseModel> {
     const path_params: string[] = ['api', 'v1', 'user', 'info'];
     const body = {};
     const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
@@ -212,21 +260,26 @@ export class UserService() {
                                     { param_name: 'count', param_value: 50 },
                                   ];
 
-    return return this.ngxHttpClientService.put(path_params, body, http_options_params);
+    return this.ngxHttpClientService.put(path_params, body, http_options_params)
+          .pipe(
+                map((response: any) => response as UserResponseModel)
+              );
   }
 }
 ```
 
-This delete method will expose `delete` method of http client.
+## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+### DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
+(for example User service, The User service will be used by the UserComponent).
 
+### Example:
 ```typescript
-export class UserService() {
+export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
-  deleteMethodInServiceFileExample() : Observable<T> {
+  deleteMethodInServiceFileExample() : Observable<UserResponseModel> {
     const path_params: string[] = ['api', 'v1', 'user', 'info'];
     const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
 
@@ -249,7 +302,10 @@ export class UserService() {
                                     { param_name: 'org_name', param_value: 'xyz' }
                                   ];
 
-    return this.ngxHttpClientService.delete(path_params, http_options_params);
+    return  this.ngxHttpClientService.delete(path_params, http_options_params)
+            .pipe(
+              map((response: any) => response as UserResponseModel)
+            );         
   }
 }
 ```

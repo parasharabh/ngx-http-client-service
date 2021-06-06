@@ -103,7 +103,7 @@ All of your code structure will be almost same except the data will change which
 The rest of calling of the methods will remain same. 
 You can use the response as the objects only.
 
-# classes
+# Classes
 
 ```typescript
 class HttpParamType {
@@ -138,7 +138,7 @@ class HTTPOptionParamArgumentType {
 
 ## get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
+### GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
 
 ### Example:
@@ -180,7 +180,7 @@ export class UserApiService() {
 
 ## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
+### POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
 
 ### Example:
@@ -225,7 +225,7 @@ export class UserApiService() {
 
 ## put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
-PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
+### PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
 
 ### Example:
@@ -268,9 +268,9 @@ export class UserApiService() {
 }
 ```
 
-## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
+### DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
 
 ### Example:
