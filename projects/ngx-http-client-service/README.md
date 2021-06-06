@@ -327,7 +327,7 @@ The following general steps are usually very helpful when debugging problems wit
 * Please check if the provided parameters value(s) of `http request` are getting reflected on actual parameters value(s) in browser console.
 * Please check if the provided parameters value(s) of `http request headers` are getting reflected on actual parameters value(s) in browser console.
 * Please check if the provided parameters value(s) of `http request headers parameters` / `http request headers query parameters` are getting reflected on actual parameters value(s) in browser console. 
-* does it work if you use update the http Options manually (i.e. in a console of your choice)?
+* Does it work if you use update the http Options manually (i.e. in a console of your choice)?
 
 # Getting a "token missing" or "no provider" error.
 
@@ -352,7 +352,7 @@ You can even supply a test environment or test cases, if necessary?
 
 # Contributing
 
-I are happy to accept pull requests or test cases for things that do not work. Feel free to submit one of those.
+I am happy to accept pull requests or test cases for things that do not work. Feel free to submit one of those.
 
 However, I will only accept pull requests that have maintenable, readable, lint test passed, test cases(old and new) and test cases passed(old and new). Please add new test cases and remove older ones only if applicable.
 
