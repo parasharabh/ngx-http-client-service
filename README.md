@@ -13,7 +13,6 @@ npm install ngx-http-client-service --save
 Add the http-client service to your `app.module.ts` or in the module where you want to add as a provider:
 
 ```typescript
-
 import { NgxHttpClientService } from 'ngx-http-client-service';
 
 @NgModule({
@@ -105,15 +104,18 @@ The rest of calling of the methods will remain same.
 You can use the response as the objects only.
 
 # classes
+
 ```typescript
 class HttpParamType {
     param_name: string;
     param_value: string | number | boolean | ReadonlyArray<string | number | boolean>;
 }
+
 class HttpHeadersType {
     header_name: string;
     header_value: string | string[];
 }
+
 class HttpOptionsParamType {
     params?: HttpParams;
     headers?: HttpHeaders;
@@ -122,6 +124,7 @@ class HttpOptionsParamType {
     responseType?: any;
     withCredentials?: boolean;
 }
+
 class HTTPOptionParamArgumentType {
     params?: HttpParamType[];
     headers?: HttpHeadersType[];
@@ -129,15 +132,16 @@ class HTTPOptionParamArgumentType {
     reportProgress?: boolean;
     responseType?: any;
     withCredentials?: boolean;
+}
 ```
 # Methods
 
-This GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
-(for example User service, The User service will be used by the UserComponent).
-
 ## get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-### Example
+GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
+(for example User service, The User service will be used by the UserComponent).
+
+### Example:
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
@@ -174,13 +178,12 @@ export class UserApiService() {
 }
 ```
 
-This POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
+## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
+
+POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
 
-## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
-
-
-### Example
+### Example:
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
@@ -220,12 +223,12 @@ export class UserApiService() {
 }
 ```
 
-This PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
-(for example User service, The User service will be used by the UserComponent).
-
 ## put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
-### Example
+PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
+(for example User service, The User service will be used by the UserComponent).
+
+### Example:
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
@@ -265,12 +268,12 @@ export class UserApiService() {
 }
 ```
 
-This DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
-(for example User service, The User service will be used by the UserComponent).
-
 ## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
-### Example
+DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
+(for example User service, The User service will be used by the UserComponent).
+
+### Example:
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
