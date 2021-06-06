@@ -137,7 +137,7 @@ This GET method of NgxHttpClientService will expose `get` method of http client 
 
 ## get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-# Example
+### Example
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
@@ -180,7 +180,7 @@ This POST method of NgxHttpClientService will expose `post` method of http clien
 ## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
 
-# Example
+### Example
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
@@ -225,7 +225,7 @@ This PUT method of NgxHttpClientService will expose `put` method of http client 
 
 ## put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
-# Example
+### Example
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
@@ -270,7 +270,7 @@ This DELETE method of NgxHttpClientService will expose `delete` method of http c
 
 ## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
-# Example
+### Example
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
