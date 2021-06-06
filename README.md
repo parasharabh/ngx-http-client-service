@@ -136,7 +136,7 @@ class HTTPOptionParamArgumentType {
 ```
 # Methods
 
-## `get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;`
+## get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
 ### GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
@@ -178,7 +178,7 @@ export class UserApiService() {
 }
 ```
 
-## `post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;`
+## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
 ### POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
@@ -223,7 +223,7 @@ export class UserApiService() {
 }
 ```
 
-## `put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;`
+## put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
 
 ### PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
@@ -268,7 +268,7 @@ export class UserApiService() {
 }
 ```
 
-## `delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;`
+## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
 ### DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
