@@ -358,7 +358,7 @@ However, I will only accept pull requests that have maintenable, readable, lint 
 
 # Author
 
-This ngxHttpClient service is brought to you by Abhishek Parashar<parashar.abh@gmail.com><https://github.com/parasharabh>. I built it for one of my apps, because the other httpCLient packages I found were not as much maintainable and were not process oriented. It will help you in making your code writing more process oriented, maintenable, readable and will help you in defining a process while defining your application http request. It will also help in testing your code and writing your test cases in more process oriented way.
+This ngxHttpClient service is brought to you by Abhishek Parashar <parashar.abh@gmail.com>. I built it for one of my apps, because the other httpCLient packages I found were not as much maintainable and were not process oriented. It will help you in making your code writing more process oriented, maintenable, readable and will help you in defining a process while defining your application http request. It will also help in testing your code and writing your test cases in more process oriented way.
 
 # Contributors
 
