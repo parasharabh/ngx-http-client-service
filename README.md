@@ -137,7 +137,7 @@ This GET method of NgxHttpClientService will expose `get` method of http client 
 
 ## get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>;
 
-# Example
+### Example
 ```typescript
 export class UserApiService() {
   constructor( private ngxHttpClientService: NgxHttpClientService ) { }
