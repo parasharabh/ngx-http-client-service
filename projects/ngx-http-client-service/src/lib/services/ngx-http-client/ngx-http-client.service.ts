@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { HttpOptionsService } from '../http-options/http-options.service';
-import { HTTPOptionParamArgumentType } from '../../models/http-options.model';
-import { APIUrlService } from '../api-path-generator/api-path-generation.service';
+import { HttpOptions } from '../../models/http-options.model';
+import { ApiPathService } from '../api-path/api-path.service';
 import { Observable } from 'rxjs';
 
 /**
@@ -25,52 +25,107 @@ export class NgxHttpClientService {
   constructor(
     private httpClient: HttpClient,
     private httpOptionsService: HttpOptionsService,
-    private APIUrlService: APIUrlService
+    private ApiPathService: ApiPathService
   ) { }
 
   /**
-   * @description will expose get method of http client.
-   * @param path_params contains path parameters of type string array
-   * @param http_options_params contains parameter of type HTTPOptionParamArgumentType.
-   */
-  public get(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object> {
-    const api_url = this.APIUrlService.constructPath(path_params);
-    const httpOptions = this.httpOptionsService.appendHttpOptions(http_options_params);
-    return this.httpClient.get(api_url, httpOptions);
+  * @description will expose get method of http client.
+  * @param pathParams contains path parameters of type string array
+  * @param HttpOptions contains parameter of type HttpOptions.
+  */
+  public get(pathParams: string[], httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.get(apiUrl, options);
   }
 
   /**
-   * @description will expose post method of http client.
-   * @param path_params contains path parameters of type string array
-   * @param http_options_params contains parameter of type HTTPOptionParamArgumentType.
-   * @param body contains parameter for http post body
-   */
-  public post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object> {
-    const api_url = this.APIUrlService.constructPath(path_params);
-    const httpOptions = this.httpOptionsService.appendHttpOptions(http_options_params);
-    return this.httpClient.post(api_url, body, httpOptions);
+  * @description will expose post method of http client.
+  * @param pathParams contains path parameters of type string array
+  * @param HttpOptions contains parameter of type HttpOptions.
+  * @param body contains parameter for http post body
+  */
+  public post(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.post(apiUrl, body, options);
   }
 
   /**
-   * @description will expose put method of http client.
-   * @param path_params contains path parameters of type string array
-   * @param http_options_params contains parameter of type HTTPOptionParamArgumentType.
-   * @param body contains parameter for http put body
-   */
-  public put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object> {
-    const api_url = this.APIUrlService.constructPath(path_params);
-    const httpOptions = this.httpOptionsService.appendHttpOptions(http_options_params);
-    return this.httpClient.put(api_url, body, httpOptions);
+  * @description will expose put method of http client.
+  * @param pathParams contains path parameters of type string array
+  * @param HttpOptions contains parameter of type HttpOptions.
+  * @param body contains parameter for http put body
+  */
+  public put(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.put(apiUrl, body, options);
   }
 
   /**
-   * @description will expose delete method of http client.
-   * @param path_params contains path parameters of type string array
-   * @param http_options_params contains parameter of type HTTPOptionParamArgumentType.
-   */
-  public delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object> {
-    const api_url = this.APIUrlService.constructPath(path_params);
-    const httpOptions = this.httpOptionsService.appendHttpOptions(http_options_params);
-    return this.httpClient.delete(api_url, httpOptions);
+  * @description will expose delete method of http client.
+  * @param pathParams contains path parameters of type string array
+  * @param HttpOptions contains parameter of type HttpOptions.
+  */
+  public delete(pathParams: string[], httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.delete(apiUrl, options);
+  }
+
+  /**
+  * @description will expose request method of http client.
+  * @param method contains the method parameter of type string.
+  * @param pathParams contains path parameters of type string array.
+  * @param HttpOptions contains parameter of type HttpOptions.
+  */
+  public request(method: string, pathParams: string[], httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.request(method, apiUrl, options);
+  }
+
+  /**
+  * @description will expose head method of http client.
+  * @param pathParams contains path parameters of type string array.
+  * @param HttpOptions contains parameter of type HttpOptions.
+  */
+  public head(pathParams: string[], httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.head(apiUrl, options);
+  }
+
+  /**
+  * @description will expose jsonp method of http client.
+  * @param pathParams contains path parameters of type string array.
+  * @param HttpOptions contains parameter of type HttpOptions.
+  */
+  public jsonp(pathParams: string[], callbackFn:string): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    return this.httpClient.jsonp(apiUrl, callbackFn);
+  }
+
+  /**
+  * @description will expose options method of http client.
+  * @param pathParams contains path parameters of type string array.
+  * @param HttpOptions contains parameter of type HttpOptions.
+  */
+  public options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.options(apiUrl, options);
+  }
+
+  /**
+  * @description will expose patch method of http client.
+  * @param pathParams contains path parameters of type string array.
+  * @param HttpOptions contains parameter of type HttpOptions.
+  */
+  public patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object> {
+    const apiUrl = this.ApiPathService.createApiPath(pathParams);
+    const options = this.httpOptionsService.appendHttpOptions(httpOptions);
+    return this.httpClient.patch(apiUrl, body, options);
   }
 }
