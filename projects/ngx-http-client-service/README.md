@@ -23,7 +23,7 @@ import { NgxHttpClientService } from 'ngx-http-client-service';
 export class AppModule { }
 ```
 
-Then, import and inject it into a service constructor.
+Then, import and inject it into a service constructor where you will be writing your api calls.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -38,34 +38,27 @@ export class UserApiService() {
 
   requestUserInfo(): Observable<UserModel> {
 
-    const path_params: string[] = ['api', 'v1', 'user', 'info'];
+    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
     const body = {};
-    const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
+    const httpOption: HttpOption = new HttpOption();
 
     // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
     // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.headers = this.constants.specificAPIHeader;
-    http_options_params.headers = [
-                                    { 
-                                      header_name: 'Content-Type',
-                                      header_value: 'application/ json; charset = utf - 8}'
-                                    }
-                                  ];
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.params = this.constants.specificAPIParams;
-    http_options_params.params =  [
-                                    { param_name: 'user_name', param_value: 'abhishek' },
-                                    { param_name: 'user_age', param_value: 27 },
-                                    { param_name: 'isEngineer', param_value: true}
-                                  ];
-
-    
-      return this.ngxHttpClientService.get(path_params, http_options_params);
+    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
+    httpOption.headers = { 
+                          'Content-Type': 'application/ json; charset = utf - 8}'
+                         };
+    httpOption.params = { 
+                          'user_name': 'abhishek',
+                          'user_age': 27,
+                          'isEngineer': true
+                        };
+                                  
+      return this.ngxHttpClientService.get(pathParams, httpOption);
           // This is just to provide an example on how other http calls might look.
-      return this.ngxHttpClientService.put(path_params, body, http_options_params);
-      return this.ngxHttpClientService.post(path_params, body, http_options_params);
-      return this.ngxHttpClientService.delete(path_params, http_options_params);
+      return this.ngxHttpClientService.put(pathParams, body, httpOption);
+      return this.ngxHttpClientService.post(pathParams, body, httpOption);
+      return this.ngxHttpClientService.delete(pathParams, httpOption);
       
   }
 }
@@ -89,9 +82,9 @@ export class UserComponent {
 
   getUserInfo(): void {
     this.userApiService.requestUserInfo().subscribe((successResponse: ) => {
-      
+      // your success handling code
     }, (error) => {
-
+      // your error handeling code
     })
   }
 }
@@ -106,37 +99,31 @@ You can use the response as the objects only.
 # Classes
 
 ```typescript
-class HttpParamType {
-    param_name: string;
-    param_value: string | number | boolean | ReadonlyArray<string | number | boolean>;
+import { HttpParams, HttpHeaders } from '@angular/common/http';
+
+export class HttpParam {
+  // it can be {'key': 'value'} / {'key', 1} / {'key', true} 
+  [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
 }
 
-class HttpHeadersType {
-    header_name: string;
-    header_value: string | string[];
+export class HttpHeader {
+  // it can be {'key': 'value'}/{'key': ['value1', 'value2']} 
+  [header: string] : string | string[];
 }
 
-class HttpOptionsParamType {
-    params?: HttpParams;
-    headers?: HttpHeaders;
-    observe?: any;
-    reportProgress?: boolean;
-    responseType?: any;
-    withCredentials?: boolean;
-}
-
-class HTTPOptionParamArgumentType {
-    params?: HttpParamType[];
-    headers?: HttpHeadersType[];
-    observe?: any;
-    reportProgress?: boolean;
-    responseType?: any;
-    withCredentials?: boolean;
+export class HttpOption {
+  param?: HttpParam;
+  header?: HttpHeader;
+  context?: any;
+  observe?: any;
+  reportProgress?: boolean;
+  responseType?: any;
+  withCredentials?: boolean;
 }
 ```
 # Methods
 
-## get( path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+## get( pathParams: string[], httpOption?: httpOption): Observable<Object>
 
 ### GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
@@ -148,37 +135,28 @@ export class UserApiService() {
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
   getMethodInServiceFileExample(): Observable<UserResponseModel> {
-    const path_params: string[] = ['api', 'v1', 'user', 'info'];
-    const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
+    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
+    const httpOption: httpOption = new httpOption();
 
     // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
     // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.headers = this.constants.specificAPIHeader;
-    http_options_params.headers = [
-                                    { 
-                                      header_name: 'Content-Type',
-                                      header_value: 'application/ json; charset = utf - 8}'
-                                    },
-                                    { 
-                                      header_name: 'Authorization',
-                                      header_value: `Bearer ${token}`
-                                    }
-                                  ];
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.params = this.constants.specificAPIParams;
-    http_options_params.params =  [
-                                    { param_name: 'org_name', param_value: 'xyz' },
-                                    { param_name: 'count', param_value: 50 },
-                                  ];
+    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
+    httpOption.headers = {
+                            'Content-Type': 'application/ json; charset = utf - 8}',
+                            'Authorization': `Bearer ${token}`
+                          };
+    httpOption.params = { 
+                          'org_name': 'xyz',
+                          'count': 50 
+                        };
 
-    return this.ngxHttpClientService.get(path_params, http_options_params)
+    return this.ngxHttpClientService.get(pathParams, httpOption)
     .pipe(map(response: any) => response as UserResponseModel);
   }
 }
 ```
 
-## post(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+## post(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
 ### POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
@@ -190,32 +168,23 @@ export class UserApiService() {
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
   updateMethodInServiceFileExample(): Observable<UserResponseModel> {
-    const path_params: string[] = ['api', 'v1', 'user', 'info'];
-    const body = {userId: 1};
-    const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
+    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
+    const body = { userId: 1 };
+    const httpOption: httpOption = new httpOption();
 
     // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
     // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.headers = this.constants.specificAPIHeader;
-    http_options_params.headers = [
-                                    { 
-                                      header_name: 'Content-Type',
-                                      header_value: 'application/ json; charset = utf - 8}'
-                                    },
-                                    { 
-                                      header_name: 'Authorization',
-                                      header_value: `Bearer ${token}`
-                                    }
-                                  ];
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.params = this.constants.specificAPIParams;
-    http_options_params.params =  [
-                                    { param_name: 'org_name', param_value: 'xyz' },
-                                    { param_name: 'count', param_value: 50 },
-                                  ];
+    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
+    httpOption.headers = {
+                          'Content-Type': 'application/ json; charset = utf - 8}',
+                          'Authorization': `Bearer ${token}`
+                         };
+    httpOption.params = { 
+                          'org_name': 'xyz',
+                          'count': 50 
+                        };
 
-    return this.ngxHttpClientService.post(path_params, body, http_options_params)
+    return this.ngxHttpClientService.post(pathParams, body, httpOption)
     .pipe(
           map((response: any) => response as UserResponseModel)
         );
@@ -223,7 +192,7 @@ export class UserApiService() {
 }
 ```
 
-## put(path_params: string[], body: any, http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+## put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
 ### PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
@@ -235,32 +204,23 @@ export class UserApiService() {
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
   updateMethodInServiceFileExample(): Observable<UserResponseModel> {
-    const path_params: string[] = ['api', 'v1', 'user', 'info'];
+    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
     const body = {};
-    const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
+    const httpOption: httpOption = new httpOption();
 
     // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
     // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.headers = this.constants.specificAPIHeader;
-    http_options_params.headers = [
-                                    { 
-                                      header_name: 'Content-Type',
-                                      header_value: 'application/ json; charset = utf - 8}'
-                                    },
-                                    { 
-                                      header_name: 'Authorization',
-                                      header_value: `Bearer ${token}`
-                                    }
-                                  ];
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here.
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.params = this.constants.specificAPIParams;
-    http_options_params.params =  [
-                                    { param_name: 'org_name', param_value: 'xyz' },
-                                    { param_name: 'count', param_value: 50 },
-                                  ];
+    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
+    httpOption.headers = {
+                            'Content-Type': 'application/ json; charset = utf - 8}',
+                            'Authorization': `Bearer ${token}`
+                          };
+    httpOption.params = { 
+                          'org_name': 'xyz',
+                          'count': 50 
+                        };
 
-    return this.ngxHttpClientService.put(path_params, body, http_options_params)
+    return this.ngxHttpClientService.put(pathParams, body, httpOption)
           .pipe(
                 map((response: any) => response as UserResponseModel)
               );
@@ -268,7 +228,7 @@ export class UserApiService() {
 }
 ```
 
-## delete(path_params: string[], http_options_params?: HTTPOptionParamArgumentType): Observable<Object>
+## delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
 
 ### DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
 (for example User service, The User service will be used by the UserComponent).
@@ -280,29 +240,21 @@ export class UserApiService() {
   // This method needs to be defined in your service file. The service file will expose this method to your component.
 
   deleteMethodInServiceFileExample() : Observable<UserResponseModel> {
-    const path_params: string[] = ['api', 'v1', 'user', 'info'];
-    const http_options_params: HTTPOptionParamArgumentType = new HTTPOptionParamArgumentType();
+    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
+    const httpOption: httpOption = new httpOption();
 
     // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.headers = this.constants.specificAPIHeader;
-    http_options_params.headers = [
-                                    { 
-                                      header_name: 'Content-Type',
-                                      header_value: 'application/ json; charset = utf - 8}'
-                                    },
-                                    { 
-                                      header_name: 'Authorization',
-                                      header_value: `Bearer ${token}`
-                                    }
-                                  ];
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively http_options_params.params = this.constants.specificAPIParams;
-    http_options_params.params =  [
-                                    { param_name: 'org_name', param_value: 'xyz' }
-                                  ];
+    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
+    httpOption.headers =  {
+                            'Content-Type': 'application/ json; charset = utf - 8}',
+                            'Authorization': `Bearer ${token}`
+                          };
+    httpOption.params = { 
+                          'org_name': 'xyz',
+                          'count': 50 
+                        };
 
-    return  this.ngxHttpClientService.delete(path_params, http_options_params)
+    return  this.ngxHttpClientService.delete(pathParams, httpOption)
             .pipe(
               map((response: any) => response as UserResponseModel)
             );         
