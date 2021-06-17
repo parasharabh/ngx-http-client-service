@@ -20,8 +20,8 @@ describe('ApiPathService Test Suite', () => {
 
     describe('ApiPathService service created', () => {
         it('ApiPathService service should be created', () => {
-            const service: ApiPathService = TestBed.inject(ApiPathService);
-            expect(service).toBeTruthy();
+            const { apiPathService } =  setup();
+            expect(apiPathService).toBeTruthy();
         });
     });
 
@@ -54,28 +54,80 @@ describe('ApiPathService Test Suite', () => {
     });
 
     describe('createApiPathWithQuery Method Test Suite', () => {
-        it('createApiPathWithQuery Method should return created api path with query params', () => {
+
+        it('createApiPathWithQuery Method should return created api path with no query params', () => {
+            const { apiPathService, apiPathServiceAny } = setup();
+            const pathComponent = ['/', 'info'];
+            spyOn(apiPathService, 'createApiPath').and.callThrough();
+            spyOn(apiPathServiceAny, 'modifyPathQuery').and.callThrough();
+            spyOn(window, 'decodeURI').and.callThrough();
+            spyOn(Object, 'entries').and.callThrough();
+            spyOn(Object, 'keys').and.callThrough();
+            spyOn(window, 'encodeURI').and.callThrough();
+            const path = apiPathService.createApiPathWithQuery(pathComponent, null);
+            expect(path).toEqual('/info');
+            expect(apiPathService.createApiPath).toHaveBeenCalledTimes(1);
+            expect(apiPathServiceAny.modifyPathQuery).toHaveBeenCalledTimes(0);
+            expect(window.decodeURI).toHaveBeenCalledTimes(0);
+            expect(Object.entries).toHaveBeenCalledTimes(0);
+            expect(Object.keys).toHaveBeenCalledTimes(0);
+            expect(window.encodeURI).toHaveBeenCalledTimes(1);
+        });
+
+        it('createApiPathWithQuery Method should return created api path with invalid query params and more than one param', () => {
             const { apiPathService, apiPathServiceAny } = setup();
             const pathComponent = ['user', 'info'];
-            const queryParams: PathQuery = { userName: 'xyz' };
+            const queryParams: PathQuery = { userName: 'xyz', '': 'xyz' };
             spyOn(apiPathService, 'createApiPath').and.callThrough();
+            spyOn(apiPathServiceAny, 'modifyPathQuery').and.callThrough();
+            spyOn(window, 'decodeURI').and.callThrough();
             spyOn(Object, 'entries').and.callThrough();
             spyOn(Object, 'keys').and.callThrough();
             spyOn(window, 'encodeURI').and.callThrough();
             const path = apiPathService.createApiPathWithQuery(pathComponent, queryParams);
             expect(path).toEqual('/user/info?userName=xyz');
-            expect(Object.entries).toHaveBeenCalledTimes(1);
-            expect(Object.keys).toHaveBeenCalledTimes(1);
             expect(apiPathService.createApiPath).toHaveBeenCalledTimes(1);
+            expect(apiPathServiceAny.modifyPathQuery).toHaveBeenCalledTimes(1);
+            expect(window.decodeURI).toHaveBeenCalledTimes(1);
+            expect(Object.entries).toHaveBeenCalledTimes(2);
+            expect(Object.keys).toHaveBeenCalledTimes(2);
             expect(window.encodeURI).toHaveBeenCalledTimes(2);
         });
 
-        it('createApiPathWithQuery Method should return created api path with no query params', () => {
-            const { apiPathService } = setup();
-            const pathComponent = ['/', 'info'];
+        it('createApiPathWithQuery Method should return created api path with query params having invalid param key with one param', () => {
+            const { apiPathService, apiPathServiceAny } = setup();
+            const pathComponent = ['user', 'info'];
+            const queryParams: PathQuery = { '': 'xyz' };
             spyOn(apiPathService, 'createApiPath').and.callThrough();
-            const path = apiPathService.createApiPathWithQuery(pathComponent, null);
-            expect(path).toEqual('/info');
+            spyOn(apiPathServiceAny, 'modifyPathQuery').and.callThrough();
+            spyOn(window, 'decodeURI').and.callThrough();
+            spyOn(Object, 'entries').and.callThrough();
+            spyOn(window, 'encodeURI').and.callThrough();
+            const path = apiPathService.createApiPathWithQuery(pathComponent, queryParams);
+            expect(path).toEqual('/user/info');
+            expect(Object.entries).toHaveBeenCalledTimes(1);
+            expect(apiPathService.createApiPath).toHaveBeenCalledTimes(1);
+            expect(apiPathServiceAny.modifyPathQuery).toHaveBeenCalledTimes(1);
+            expect(window.decodeURI).toHaveBeenCalledTimes(0);
+            expect(window.encodeURI).toHaveBeenCalledTimes(2);
+        });
+
+        it('createApiPathWithQuery Method should return created api path with query params having valid param key more than one', () => {
+            const { apiPathService, apiPathServiceAny } = setup();
+            const pathComponent = ['user', 'info'];
+            const queryParams: PathQuery = { userName: 'xyz', age: 2 };
+            spyOn(apiPathService, 'createApiPath').and.callThrough();
+            spyOn(apiPathServiceAny, 'modifyPathQuery').and.callThrough();
+            spyOn(window, 'decodeURI').and.callThrough();
+            spyOn(Object, 'entries').and.callThrough();
+            spyOn(window, 'encodeURI').and.callThrough();
+            const path = apiPathService.createApiPathWithQuery(pathComponent, queryParams);
+            expect(path).toEqual('/user/info?userName=xyz&age=2');
+            expect(Object.entries).toHaveBeenCalledTimes(2);
+            expect(apiPathService.createApiPath).toHaveBeenCalledTimes(1);
+            expect(apiPathServiceAny.modifyPathQuery).toHaveBeenCalledTimes(1);
+            expect(window.decodeURI).toHaveBeenCalledTimes(1);
+            expect(window.encodeURI).toHaveBeenCalledTimes(2);
         });
     });
 

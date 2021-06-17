@@ -27,17 +27,20 @@ export class ApiPathService {
   private QUERY_DIVIDER = ApiPathConstants.QUERY_DIVIDER;
   private QUERY_ASSIGNER = ApiPathConstants.QUERY_ASSIGNER;
 
+
   /**
-  * @description safelyDecodeURIComponent.
-  * @param encodedURI is of type string.
-  * @returns decodedURI as string.
-  */
-  private static safeDecodeURI(encodedURI: string): string {
-    try {
-      return decodeURI(encodedURI);
-    } catch {
-      return encodedURI;
-    }
+ * @description validating QueryParam.
+ * @param pathQuery as an argument of type PathQuery.
+ * @return constructed PathQuery Object.
+ */
+  private modifyPathQuery(pathQuery: PathQuery): PathQuery {
+    let constructedPathQuery = {};
+    Object.entries(pathQuery).filter(([query, queryValue]) => {
+      if (query) {
+        constructedPathQuery[query] = queryValue;
+      }
+    });
+    return constructedPathQuery;
   }
 
   /**
@@ -65,17 +68,17 @@ export class ApiPathService {
     if (!pathQuery) {
       return path;
     } else {
-      path = ApiPathService.safeDecodeURI(path) + this.QUERY_SPECIFIER;
-      Object.entries(pathQuery).forEach(([query, queryValue], index) => {
-        if (query && queryValue) {
+      pathQuery = this.modifyPathQuery(pathQuery);
+      if (Object.keys(pathQuery).length) {
+        path = decodeURI(path) + this.QUERY_SPECIFIER;
+        Object.entries(pathQuery).forEach(([query, queryValue], index) => {
           if (Object.keys(pathQuery).length === (index + 1)) {
             path = path + query + this.QUERY_ASSIGNER + queryValue;
           } else {
             path = path + query + this.QUERY_ASSIGNER + queryValue + this.QUERY_DIVIDER
           }
-        }
-      })
-        
+        });
+      }
       return encodeURI(path);
     }
   }

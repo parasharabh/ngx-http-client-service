@@ -100,7 +100,7 @@ export class NgxHttpClientService {
   /**
   * @description will expose jsonp method of http client.
   * @param pathParams contains path parameters of type string array.
-  * @param HttpOptions contains parameter of type HttpOptions.
+  * @param callbackFn contains parameter of type string.
   */
   public jsonp(pathParams: string[], callbackFn:string): Observable<Object> {
     const apiUrl = this.ApiPathService.createApiPath(pathParams);
@@ -121,6 +121,7 @@ export class NgxHttpClientService {
   /**
   * @description will expose patch method of http client.
   * @param pathParams contains path parameters of type string array.
+  * @param body of type any.
   * @param HttpOptions contains parameter of type HttpOptions.
   */
   public patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object> {

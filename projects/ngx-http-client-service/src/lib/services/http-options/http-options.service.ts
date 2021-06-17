@@ -20,14 +20,14 @@ export class HttpOptionsService {
   constructor() { }
 
   /**
-   * @description appendHTTPParams is a common method.
+   * @description appendHttpParams is a common method.
    * @param httpParam contains an object of HttpParam.
    * @returns returns constructed httpParameters of type HttpParam
    */
-  public appendHTTPParams(httpParam: HttpParam): HttpParams {
+  private appendHttpParams(httpParam: HttpParam): HttpParams {
     let httpParams = new HttpParams();
     Object.entries(httpParam).forEach(([param, paramValue]) => {
-      if ((!httpParams.has(param)) && paramValue) {
+      if (param && paramValue.toString()) {
         httpParams = httpParams.append(param, paramValue.toString());
       }
     });
@@ -35,14 +35,14 @@ export class HttpOptionsService {
   }
 
   /**
-   * @description appendHTTPHeaders is a common method.
+   * @description appendHttpHeaders is a common method.
    * @param headers contains an object of HttpHeader.
    * @returns returns constructed httpParameters of type HttpParam
    */
-  public appendHTTPHeader(httpHeader: HttpHeader): HttpHeaders {
+  private appendHttpHeaders(httpHeader: HttpHeader): HttpHeaders {
     let httpHeaders = new HttpHeaders();
     Object.entries(httpHeader).forEach(([header, headerValue]) => {
-      if ((!httpHeaders.has(header)) && headerValue) {
+      if (header && headerValue.toString()) {
         httpHeaders = httpHeaders.append(header, headerValue.toString());
       }
     });
@@ -62,14 +62,14 @@ export class HttpOptionsService {
     }
     const httpOptions = new HttpOptions();
     if (httpOptionsParameters.param) {
-      httpOptions.params = this.appendHTTPParams(httpOptionsParameters.param);
+      httpOptions.params = this.appendHttpParams(httpOptionsParameters.param);
     } else {
-      httpOptions.params = this.appendHTTPParams(null);
+      httpOptions.params = this.appendHttpParams({});
     }
     if (httpOptionsParameters.header) {
-      httpOptions.headers = this.appendHTTPHeader(httpOptionsParameters.header);
+      httpOptions.headers = this.appendHttpHeaders(httpOptionsParameters.header);
     } else {
-      httpOptions.headers = this.appendHTTPHeader(null);
+      httpOptions.headers = this.appendHttpHeaders({});
     }
     if (httpOptionsParameters.observe) {
       httpOptions.observe = httpOptionsParameters.observe;

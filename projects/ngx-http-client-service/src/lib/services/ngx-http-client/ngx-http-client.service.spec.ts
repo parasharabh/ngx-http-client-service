@@ -40,13 +40,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
 
-      ngxHttpClientService.get(pathParams, httpOptionsParams).subscribe(data => {
+      ngxHttpClientService.get(pathParams, httpOptions).subscribe(data => {
         expect(data).toEqual(mockData);
       }, () => { });
 
@@ -63,13 +63,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
 
-      ngxHttpClientService.get(pathParams, httpOptionsParams).subscribe(() => {
+      ngxHttpClientService.get(pathParams, httpOptions).subscribe(() => {
       }, (data: HttpErrorResponse | TimeoutError | Error) => {
         expect(data).toEqual(mockData);
       });
@@ -92,13 +92,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
 
-      ngxHttpClientService.post(pathParams, body, httpOptionsParams).subscribe(data => {
+      ngxHttpClientService.post(pathParams, body, httpOptions).subscribe(data => {
         expect(data).toEqual(mockData);
       }, () => { });
 
@@ -118,13 +118,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
 
-      ngxHttpClientService.post(pathParams, body, httpOptionsParams).subscribe(() => {
+      ngxHttpClientService.post(pathParams, body, httpOptions).subscribe(() => {
       }, (data: HttpErrorResponse | TimeoutError | Error) => {
         expect(data).toEqual(mockData);
       });
@@ -148,13 +148,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
 
-      ngxHttpClientService.put(pathParams, body, httpOptionsParams).subscribe(data => {
+      ngxHttpClientService.put(pathParams, body, httpOptions).subscribe(data => {
         expect(data).toEqual(mockData);
       }, () => { });
 
@@ -174,13 +174,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
 
-      ngxHttpClientService.put(pathParams, body, httpOptionsParams).subscribe(() => {
+      ngxHttpClientService.put(pathParams, body, httpOptions).subscribe(() => {
       }, (data: HttpErrorResponse | TimeoutError | Error) => {
         expect(data).toEqual(mockData);
       });
@@ -203,13 +203,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
 
-      ngxHttpClientService.delete(pathParams, httpOptionsParams).subscribe(data => {
+      ngxHttpClientService.delete(pathParams, httpOptions).subscribe(data => {
         expect(data).toEqual(mockData);
       }, () => { });
 
@@ -227,13 +227,13 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptionsParams: HttpOption = new HttpOption();
+      const httpOptions: HttpOption = new HttpOption();
       const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
       const httpPathParams: HttpParam = { userName: 'xyz' };
-      httpOptionsParams.header = httpHeaderParams;
-      httpOptionsParams.param = httpPathParams;
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
       
-      ngxHttpClientService.delete(pathParams, httpOptionsParams).subscribe(() => {
+      ngxHttpClientService.delete(pathParams, httpOptions).subscribe(() => {
       }, (data: HttpErrorResponse | TimeoutError | Error) => {
         expect(data).toEqual(mockData);
       });
@@ -241,6 +241,257 @@ describe('NgxHttpClientService Test Suit', () => {
       const req: TestRequest = httpTestingController.expectOne(requestUrl);
       
       expect(req.request.method).toBe('DELETE');
+
+      req.flush(mockData);
+    });
+  });
+
+  describe('REQUEST Method Test Suite', () => {
+
+    it('should call the method request() and should return the success response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const method = 'GET';
+      const mockData = new Observable<Object>();
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.request(method, pathParams, httpOptions).subscribe(data => {
+        expect(data).toEqual(mockData);
+      }, () => { });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('GET');
+
+      req.flush(mockData);
+    });
+
+    it('should call the method request() and should return the error response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const method = 'GET';
+      const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.request(method, pathParams, httpOptions).subscribe(() => {
+      }, (data: HttpErrorResponse | TimeoutError | Error) => {
+        expect(data).toEqual(mockData);
+      });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('GET');
+
+      req.flush(mockData);
+    });
+  });
+
+  describe('HEAD Method Test Suite', () => {
+
+    it('should call the method head() and should return the success response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = new Observable<Object>();
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.head(pathParams, httpOptions).subscribe(data => {
+        expect(data).toEqual(mockData);
+      }, () => { });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('HEAD');
+      req.flush(mockData);
+    });
+
+    it('should call the method head() and should return the error response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.head(pathParams, httpOptions).subscribe(() => {
+      }, (data: HttpErrorResponse | TimeoutError | Error) => {
+        expect(data).toEqual(mockData);
+      });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('HEAD');
+
+      req.flush(mockData);
+    });
+  });
+
+  describe('JSONP Method Test Suite', () => {
+
+    it('should call the method jsonp() and should return the success response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = new Observable<Object>();
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { callback: 'JSONP_CALLBACK' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      ngxHttpClientService.jsonp(pathParams, 'callback').subscribe(data => {
+        expect(data).toEqual(mockData);
+      }, () => { });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('JSONP');
+      req.flush(mockData);
+    });
+
+    it('should call the method jsonp() and should return the error response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { callback: 'JSONP_CALLBACK' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      ngxHttpClientService.jsonp(pathParams, 'callback').subscribe(() => {
+      }, (data: HttpErrorResponse | TimeoutError | Error) => {
+        expect(data).toEqual(mockData);
+      });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('JSONP');
+
+      req.flush(mockData);
+    });
+  });
+
+  describe('OPTIONS Method Test Suite', () => {
+
+    it('should call the method options() and should return the success response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = new Observable<Object>();
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.options(pathParams, httpOptions).subscribe(data => {
+        expect(data).toEqual(mockData);
+      }, () => { });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('OPTIONS');
+      req.flush(mockData);
+    });
+
+    it('should call the method options() and should return the error response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
+      const pathParams = ['api', 'user'];
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.options(pathParams, httpOptions).subscribe(() => {
+      }, (data: HttpErrorResponse | TimeoutError | Error) => {
+        expect(data).toEqual(mockData);
+      });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('OPTIONS');
+
+      req.flush(mockData);
+    });
+  });
+
+  describe('PATCH Method Test Suite', () => {
+
+    it('should call the method patch() and should return the success response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = new Observable<Object>();
+      const pathParams = ['api', 'user'];
+      const body = {};
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.patch(pathParams, body, httpOptions).subscribe(data => {
+        expect(data).toEqual(mockData);
+      }, () => { });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('PATCH');
+      expect(req.request.body).toBe(body);
+
+      req.flush(mockData);
+    });
+
+    it('should call the method post() and should return the error response', () => {
+      const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
+      const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
+      const pathParams = ['api', 'user'];
+      const body = {};
+      const apiQueryParam: PathQuery = { userName: 'xyz' };
+      const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
+
+      const httpOptions: HttpOption = new HttpOption();
+      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: HttpParam = { userName: 'xyz' };
+      httpOptions.header = httpHeaderParams;
+      httpOptions.param = httpPathParams;
+
+      ngxHttpClientService.patch(pathParams, body, httpOptions).subscribe(() => {
+      }, (data: HttpErrorResponse | TimeoutError | Error) => {
+        expect(data).toEqual(mockData);
+      });
+
+      const req: TestRequest = httpTestingController.expectOne(requestUrl);
+
+      expect(req.request.method).toBe('PATCH');
+      expect(req.request.body).toBe(body);
 
       req.flush(mockData);
     });
