@@ -2,10 +2,12 @@
 
 # compiled output
 /documentation
+/projects/ngx-http-client-service-app/coverage
 /projects/ngx-http-client-service/documentation
 /dist
 /tmp
 /out-tsc
+/projects/ngx-http-client-service/coverage
 # Only exists if Bazel was run
 /bazel-out
 

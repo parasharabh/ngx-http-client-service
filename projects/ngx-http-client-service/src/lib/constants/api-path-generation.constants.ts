@@ -1,6 +1,6 @@
-export class APIUrlConstants {
-    public static BASE = '';
-    public static END = '/';
+export class ApiPathConstants {
+    public static PATH_BASE = '/';
+    public static PATH_DIVIDER = '/';
     public static QUERY_SPECIFIER = '?';
     public static QUERY_DIVIDER = '&';
     public static QUERY_ASSIGNER = '=';

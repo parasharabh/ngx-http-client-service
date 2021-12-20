@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { HttpParamType, HttpHeadersType, HTTPOptionParamArgumentType, HttpOptionsParamType } from '../../models/http-options.model';
+import { HttpParam, HttpHeader, HttpOptions, HttpOption } from '../../models/http-options.model';
 
 /**
  * Injectable Http Options Service
@@ -20,56 +20,56 @@ export class HttpOptionsService {
   constructor() { }
 
   /**
-   * @description appendHTTPParams is a common method.
-   * @param param_component contains an array of param_component_object_type : HttpParamType
-   * @returns returns constructed httpParameters of type HttpParamType
+   * @description appendHttpParams is a common method.
+   * @param httpParam contains an object of HttpParam.
+   * @returns returns constructed httpParameters of type HttpParam
    */
-  public appendHTTPParams(param_component: HttpParamType[]): HttpParams {
-    let httpParam = new HttpParams();
-    param_component.forEach((param) => {
-      if ((!httpParam.has(param.param_name)) && param.param_value) {
-        httpParam = httpParam.append(param.param_name, param.param_value.toString());
+  private appendHttpParams(httpParam: HttpParam): HttpParams {
+    let httpParams = new HttpParams();
+    Object.entries(httpParam).forEach(([param, paramValue]) => {
+      if (param && paramValue.toString()) {
+        httpParams = httpParams.append(param, paramValue.toString());
       }
     });
-    return httpParam;
+    return httpParams;
   }
 
   /**
-   * @description appendHTTPHeaders is a common method.
-   * @param header_component contains an array of header_component_object_type : HttpPathHeaderType
-   * @returns returns constructed httpParameters of type HttpParamType
+   * @description appendHttpHeaders is a common method.
+   * @param headers contains an object of HttpHeader.
+   * @returns returns constructed httpParameters of type HttpParam
    */
-  public appendHTTPHeader(header_component: HttpHeadersType[]): HttpHeaders {
-    let httpHeader = new HttpHeaders();
-    header_component.forEach((header) => {
-      if ((!httpHeader.has(header.header_name)) && header.header_value) {
-        httpHeader = httpHeader.append(header.header_name, header.header_value);
+  private appendHttpHeaders(httpHeader: HttpHeader): HttpHeaders {
+    let httpHeaders = new HttpHeaders();
+    Object.entries(httpHeader).forEach(([header, headerValue]) => {
+      if (header && headerValue.toString()) {
+        httpHeaders = httpHeaders.append(header, headerValue.toString());
       }
     });
-    return httpHeader;
+    return httpHeaders;
   }
 
   /**
    * @description provides the http options.
-   * @param httPathParameters contains params of type httpPamaOptionsType.
+   * @param httpOptionsParameters contains params of type HttpOptions.
    * @returns returns appendd http options.
    */
-  public appendHttpOptions(httpOptionsParameters: HTTPOptionParamArgumentType): HttpOptionsParamType {
+  public appendHttpOptions(httpOptionsParameters: HttpOption): HttpOptions {
     if (!httpOptionsParameters) {
-      httpOptionsParameters = new HTTPOptionParamArgumentType();
-      httpOptionsParameters.headers = [];
-      httpOptionsParameters.params = [];
+      httpOptionsParameters = new HttpOption();
+      httpOptionsParameters.header = {};
+      httpOptionsParameters.param = {};
     }
-    const httpOptions = new HttpOptionsParamType();
-    if (httpOptionsParameters.params) {
-      httpOptions.params = this.appendHTTPParams(httpOptionsParameters.params);
+    const httpOptions = new HttpOptions();
+    if (httpOptionsParameters.param) {
+      httpOptions.params = this.appendHttpParams(httpOptionsParameters.param);
     } else {
-      httpOptions.params = this.appendHTTPParams([]);
+      httpOptions.params = this.appendHttpParams({});
     }
-    if (httpOptionsParameters.headers) {
-      httpOptions.headers = this.appendHTTPHeader(httpOptionsParameters.headers);
+    if (httpOptionsParameters.header) {
+      httpOptions.headers = this.appendHttpHeaders(httpOptionsParameters.header);
     } else {
-      httpOptions.headers = this.appendHTTPHeader([]);
+      httpOptions.headers = this.appendHttpHeaders({});
     }
     if (httpOptionsParameters.observe) {
       httpOptions.observe = httpOptionsParameters.observe;
