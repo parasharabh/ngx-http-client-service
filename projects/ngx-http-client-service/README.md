@@ -34,22 +34,9 @@ It helps you write your code in process oriented way and much more cleaner way.
 npm install ngx-http-client-service --save
 ```
 
-# Uses
+# Usage
 
-Add the http-client service to your `app.module.ts` or in the module where you want to add as a provider:
-
-```typescript
-import { NgxHttpClientService } from 'ngx-http-client-service';
-
-@NgModule({
-  ...
-  providers: [ NgxHttpClientService ],
-  ...
-})
-export class AppModule { }
-```
-
-Then, import and inject it into a service constructor where you will be writing your api calls.
+Import and inject NgxHttpClientService into a service constructor of your service where you will be writing your http calls.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -90,6 +77,7 @@ export class UserApiService() {
 }
 ```
 Then use the UserApiService in respective component.
+Make sure you add the HttpClientModule in the module where your component is defined.
 
 ``` typescript
 
