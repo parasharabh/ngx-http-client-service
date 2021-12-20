@@ -1,6 +1,32 @@
 # NgxHttpClientService
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Angular 9  service for http-client-service.
+Angular 9 http service for making your api request process more smooth and process oriented
+
+## Getting Started
+
+## Features
+
+The ngx-http-client-service will help you in building a more process and maintainable code. Using this service you will define a set of steps to be taken before writing your http calls which each of the developer can follow. It will customize the http calls.
+It takes the api url in a array format which you can store in a constant file and can pass to this ngx-http-client-service whenever required. 
+It also takes http options as an argument. you can store the different http options in different constants file or in one constant file with different names and can pass the httpOptions to the ngx-http-client-service whenever making an api call based on the requirement.
+
+Whenever you need to change the data(api url or http options). You can just go the constant file and changes will reflect in actual http calls. No need to interact with the actual services where http calls are defined. 
+
+In testing you can use the same constants file data and also can use the ngx-http-client-service.
+It helps you write your code in process oriented way and much more cleaner way.
+
+- GET method with custom http options
+- PUT method with custom http options
+- POST method with custom http options
+- DELETE method with custom http options
+- REQEUST method with custom http options
+- HEAD method with custom http options
+- JSONP method
+- OPTIONS method with custom http options
+- PATCH method with custom http options
 
 # Installation
 
