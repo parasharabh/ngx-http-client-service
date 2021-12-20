@@ -64,7 +64,7 @@ export class UserApiService() {
 
   requestUserInfo(): Observable<UserModel> {
 
-    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
+    const pathParams: string[] = ['api', 'v1', 'user', 'info'];// or you can define this array in some constant file and then import them and use it.
     const body = {};
     const httpOption: HttpOption = new HttpOption();
 
@@ -81,11 +81,11 @@ export class UserApiService() {
                         };
                                   
       return this.ngxHttpClientService.get(pathParams, httpOption);
-          // This is just to provide an example on how other http calls might look.
-      return this.ngxHttpClientService.put(pathParams, body, httpOption);
-      return this.ngxHttpClientService.post(pathParams, body, httpOption);
-      return this.ngxHttpClientService.delete(pathParams, httpOption);
       
+      // This is just to provide how other http calls might look.
+      //return this.ngxHttpClientService.put(pathParams, body, httpOption);
+      //return this.ngxHttpClientService.post(pathParams, body, httpOption);
+      //return this.ngxHttpClientService.delete(pathParams, httpOption);
   }
 }
 ```
