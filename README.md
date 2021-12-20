@@ -1,6 +1,32 @@
 # NgxHttpClientService
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Angular 9  service for http-client-service.
+Angular 9 http service for making your api request process more smooth and process oriented
+
+## Getting Started
+
+## Features
+
+The ngx-http-client-service will help you in building a more process and maintainable code. Using this service you will define a set of steps to be taken before writing your http calls which each of the developer can follow. It will customize the http calls.
+It takes the api url in a array format which you can store in a constant file and can pass to this ngx-http-client-service whenever required. 
+It also takes http options as an argument. you can store the different http options in different constants file or in one constant file with different names and can pass the httpOptions to the ngx-http-client-service whenever making an api call based on the requirement.
+
+Whenever you need to change the data(api url or http options). You can just go the constant file and changes will reflect in actual http calls. No need to interact with the actual services where http calls are defined. 
+
+In testing you can use the same constants file data and also can use the ngx-http-client-service.
+It helps you write your code in process oriented way and much more cleaner way.
+
+- GET method with custom http options
+- PUT method with custom http options
+- POST method with custom http options
+- DELETE method with custom http options
+- REQEUST method with custom http options
+- HEAD method with custom http options
+- JSONP method
+- OPTIONS method with custom http options
+- PATCH method with custom http options
 
 # Installation
 
@@ -38,7 +64,7 @@ export class UserApiService() {
 
   requestUserInfo(): Observable<UserModel> {
 
-    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
+    const pathParams: string[] = ['api', 'v1', 'user', 'info'];// or you can define this array in some constant file and then import them and use it.
     const body = {};
     const httpOption: HttpOption = new HttpOption();
 
@@ -55,11 +81,11 @@ export class UserApiService() {
                         };
                                   
       return this.ngxHttpClientService.get(pathParams, httpOption);
-          // This is just to provide an example on how other http calls might look.
-      return this.ngxHttpClientService.put(pathParams, body, httpOption);
-      return this.ngxHttpClientService.post(pathParams, body, httpOption);
-      return this.ngxHttpClientService.delete(pathParams, httpOption);
       
+      // This is just to provide how other http calls might look.
+      //return this.ngxHttpClientService.put(pathParams, body, httpOption);
+      //return this.ngxHttpClientService.post(pathParams, body, httpOption);
+      //return this.ngxHttpClientService.delete(pathParams, httpOption);
   }
 }
 ```
@@ -126,141 +152,18 @@ export class HttpOption {
 ## get( pathParams: string[], httpOption?: httpOption): Observable<Object>
 
 ### GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
-(for example User service, The User service will be used by the UserComponent).
-
-### Example:
-```typescript
-export class UserApiService() {
-  constructor( private ngxHttpClientService: NgxHttpClientService ) { }
-  // This method needs to be defined in your service file. The service file will expose this method to your component.
-
-  getMethodInServiceFileExample(): Observable<UserResponseModel> {
-    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
-    const httpOption: httpOption = new httpOption();
-
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
-    httpOption.headers = {
-                            'Content-Type': 'application/ json; charset = utf - 8}',
-                            'Authorization': `Bearer ${token}`
-                          };
-    httpOption.params = { 
-                          'org_name': 'xyz',
-                          'count': 50 
-                        };
-
-    return this.ngxHttpClientService.get(pathParams, httpOption)
-    .pipe(map(response: any) => response as UserResponseModel);
-  }
-}
-```
 
 ## post(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
 ### POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
-(for example User service, The User service will be used by the UserComponent).
-
-### Example:
-```typescript
-export class UserApiService() {
-  constructor( private ngxHttpClientService: NgxHttpClientService ) { }
-  // This method needs to be defined in your service file. The service file will expose this method to your component.
-
-  updateMethodInServiceFileExample(): Observable<UserResponseModel> {
-    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
-    const body = { userId: 1 };
-    const httpOption: httpOption = new httpOption();
-
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
-    httpOption.headers = {
-                          'Content-Type': 'application/ json; charset = utf - 8}',
-                          'Authorization': `Bearer ${token}`
-                         };
-    httpOption.params = { 
-                          'org_name': 'xyz',
-                          'count': 50 
-                        };
-
-    return this.ngxHttpClientService.post(pathParams, body, httpOption)
-    .pipe(
-          map((response: any) => response as UserResponseModel)
-        );
-  }
-}
-```
 
 ## put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
 ### PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
-(for example User service, The User service will be used by the UserComponent).
-
-### Example:
-```typescript
-export class UserApiService() {
-  constructor( private ngxHttpClientService: NgxHttpClientService ) { }
-  // This method needs to be defined in your service file. The service file will expose this method to your component.
-
-  updateMethodInServiceFileExample(): Observable<UserResponseModel> {
-    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
-    const body = {};
-    const httpOption: httpOption = new httpOption();
-
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. 
-    // Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
-    httpOption.headers = {
-                            'Content-Type': 'application/ json; charset = utf - 8}',
-                            'Authorization': `Bearer ${token}`
-                          };
-    httpOption.params = { 
-                          'org_name': 'xyz',
-                          'count': 50 
-                        };
-
-    return this.ngxHttpClientService.put(pathParams, body, httpOption)
-          .pipe(
-                map((response: any) => response as UserResponseModel)
-              );
-  }
-}
-```
 
 ## delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
 
 ### DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
-(for example User service, The User service will be used by the UserComponent).
-
-### Example:
-```typescript
-export class UserApiService() {
-  constructor( private ngxHttpClientService: NgxHttpClientService ) { }
-  // This method needs to be defined in your service file. The service file will expose this method to your component.
-
-  deleteMethodInServiceFileExample() : Observable<UserResponseModel> {
-    const pathParams: string[] = ['api', 'v1', 'user', 'info'];
-    const httpOption: httpOption = new httpOption();
-
-    // We can store the array of headers in some other place like constant files to store all static data and pass the reference here. Think if in future you want to change these values you only have to change it in static constant files and the code functionality can remain untouched. 
-    // Alternatively httpOption.headers = this.constants.specificAPIHeader;
-    httpOption.headers =  {
-                            'Content-Type': 'application/ json; charset = utf - 8}',
-                            'Authorization': `Bearer ${token}`
-                          };
-    httpOption.params = { 
-                          'org_name': 'xyz',
-                          'count': 50 
-                        };
-
-    return  this.ngxHttpClientService.delete(pathParams, httpOption)
-            .pipe(
-              map((response: any) => response as UserResponseModel)
-            );         
-  }
-}
-```
 
 # FAQ
 
@@ -312,7 +215,7 @@ However, I will only accept pull requests that have maintenable, readable, lint 
 
 # Author
 
-This ngxHttpClient service is brought to you by Abhishek Parashar [Email](parashar.abh@gmail.com). I built it for one of my apps, because the other httpCLient packages I found were not as much maintainable and were not process oriented. It will help you in making your code writing more process oriented, maintenable, readable and will help you in defining a process while defining your application http request. It will also help in testing your code and writing your test cases in more process oriented way.
+This ngxHttpClient service is brought to you by Abhishek Parashar. I built it for one of my apps, because the other httpCLient packages I found were not as much maintainable and were not process oriented. It will help you in making your code writing more process oriented, maintenable, readable and will help you in defining a process while defining your application http request. It will also help in testing your code and writing your test cases in more process oriented way.
 
 # Contributors
 
