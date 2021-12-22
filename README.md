@@ -166,8 +166,6 @@ options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
 - `patch` - return observable `PATCH` http request.
 patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object>
 
-### FAQ
-
 ## General tips
 
 Checking out the following resources usually solves most of the problems people seem to have with this ngx-http-client service:
@@ -185,28 +183,14 @@ The following general steps are usually very helpful when debugging problems wit
 * Please check if the provided parameters value(s) of `http request headers parameters` / `http request headers query parameters` are getting reflected on actual parameters value(s) in browser console. 
 * Does it work if you use update the http Options manually (i.e. in a console of your choice)?
 
-# Getting a "token missing" or "no provider" error.
-
-Package managers sometime act strangely and cache the packages sometimes. This results in using old versions of codes despite having installed new packages. Please try to clear cache. 
-If you have "token missing" or "no provider" errors, a simple re-installation of your node modules might suffice:
-
-```
-rm -rf node_modules
-yarn # or `npm install`
-```
-
-## Having Problem with framework XY or library YZ? What should be the next step?
-
-I can always help in resolving the issue based on the provided information or guide you in direction which can work beter for you or some work around. In some case, you can ask at [StackOverflow](https://stackoverflow.com/) for help.
-
-# Opening issues
+## Opening issues
 
 Please try to give us as much information as you can when you open an issue.
 You can even supply a test environment or test cases, if necessary?
 
 * [Open a new issue here](https://github.com/parasharabh/ngx-http-client-service/issues)
 
-# Contributing
+## Contributing
 
 I am happy to accept pull requests or test cases for things that do not work. Feel free to submit one of those.
 
@@ -214,16 +198,16 @@ However, I will only accept pull requests that have maintenable, readable, lint 
 
 * [Open a new pull request here](https://github.com/parasharabh/ngx-http-client-service/compare)
 
-# Author
+## Author
 
 This ngxHttpClient service is brought to you by Abhishek Parashar. I built it for one of my apps, because the other httpCLient packages I found were not as much maintainable and were not process oriented. It will help you in making your code writing more process oriented, maintenable, readable and will help you in defining a process while defining your application http request. It will also help in testing your code and writing your test cases in more process oriented way.
 
-# Contributors
+## Contributors
 
 Thanks to all contributors:
 
 * [parasharabh](https://github.com/parasharabh)
 
-# License
+## License
 
 [MIT](https://github.com/parasharabh/ngx-http-client-service/blob/main/LICENSE)
