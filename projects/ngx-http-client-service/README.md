@@ -140,31 +140,31 @@ export class NgxHttpOptions {
 ### Methods
 
 - `get` - return observable `GET` http request.
-get( pathParams: string[], httpOption?: httpOption): Observable<Object>
+Example: get( pathParams: string[], httpOption?: httpOption): Observable<Object>
 
 - `post` - return observable `POST` http request.
-put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+Example: put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
 - `put` - return observable `PUT` http request.
-put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+Example: put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
 - `delete` - return observable `DELETE` http request.
-delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
+Example: delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
 
 - `request` - return observable `REQUEST` http request.
-request(method: string, pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
+Example: request(method: string, pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
 
 - `head` - return observable `HEAD` http request.
-head(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
+Example: head(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
 
 - `jsonp` - return observable `JSONP` http request.
-jsonp(pathParams: string[], callbackFn:string): Observable<Object>
+Example: jsonp(pathParams: string[], callbackFn:string): Observable<Object>
 
 - `options` - return observable `OPTIONS` http request.
-options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
+Example: options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
 
 - `patch` - return observable `PATCH` http request.
-patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object>
+Example: patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object>
 
 ## General tips
 
@@ -209,8 +209,6 @@ This ngxHttpClient service is brought to you by Abhishek Parashar. I built it fo
 [MIT](https://github.com/parasharabh/ngx-http-client-service/blob/main/LICENSE)
 
 ## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
