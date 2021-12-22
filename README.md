@@ -186,7 +186,7 @@ The following general steps are usually very helpful when debugging problems wit
 ## Opening issues
 
 Please try to give us as much information as you can when you open an issue.
-You can even supply a test environment or test cases, if necessary?
+You can even supply a test environment or test cases, if necessary?. Please share sample code using codesandbox.com or stackblitz.com to help me re-produce the issue.
 
 * [Open a new issue here](https://github.com/parasharabh/ngx-http-client-service/issues)
 
@@ -202,12 +202,25 @@ However, I will only accept pull requests that have maintenable, readable, lint 
 
 This ngxHttpClient service is brought to you by Abhishek Parashar. I built it for one of my apps, because the other httpCLient packages I found were not as much maintainable and were not process oriented. It will help you in making your code writing more process oriented, maintenable, readable and will help you in defining a process while defining your application http request. It will also help in testing your code and writing your test cases in more process oriented way.
 
-## Contributors
-
-Thanks to all contributors:
-
 * [parasharabh](https://github.com/parasharabh)
 
 ## License
 
 [MIT](https://github.com/parasharabh/ngx-http-client-service/blob/main/LICENSE)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="www.linkedin.com/in/abhishek-parashar-50103810b"><img src="https://avatars.githubusercontent.com/u/15143598?s=400&u=0346c306c788475785ae7859bf9c9d37466b4047&v=4" width="100px;" alt=""/><br /><sub><b>Abhishek Parashar</b></sub></a><br /><a href="https://github.com/parasharabh" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
