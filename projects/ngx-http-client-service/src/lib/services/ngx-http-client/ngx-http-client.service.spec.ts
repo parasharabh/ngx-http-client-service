@@ -6,7 +6,7 @@ import { ErrorConstants } from '../../constants/error.constants';
 import { TimeoutError, Observable } from 'rxjs';
 import { NgxHttpClientService } from './ngx-http-client.service';
 import { ApiPathService } from '../api-path/api-path.service';
-import { HttpOptions, HttpOption, HttpParam, HttpHeader } from '../../models/http-options.model';
+import { HttpOptions, NgxHttpOptions, NgxHttpParams, NgxHttpHeaders } from '../../models/http-options.model';
 import { PathQuery } from '../../models/common-lib.model';
 
 describe('NgxHttpClientService Test Suit', () => {
@@ -40,9 +40,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -63,9 +63,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -92,9 +92,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -118,9 +118,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -148,9 +148,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -174,9 +174,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -203,9 +203,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -227,9 +227,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam:  PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams:  HttpHeader = {'authorization': 'Bearer xyz'};
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
       
@@ -256,9 +256,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -281,9 +281,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -309,9 +309,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -332,9 +332,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -399,9 +399,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -422,9 +422,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -451,9 +451,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 
@@ -477,9 +477,9 @@ describe('NgxHttpClientService Test Suit', () => {
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
-      const httpOptions: HttpOption = new HttpOption();
-      const httpHeaderParams: HttpHeader = { 'authorization': 'Bearer xyz' };
-      const httpPathParams: HttpParam = { userName: 'xyz' };
+      const httpOptions: NgxHttpOptions = new NgxHttpOptions();
+      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
 

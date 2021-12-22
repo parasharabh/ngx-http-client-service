@@ -11,9 +11,10 @@
     "e2e": "ng e2e",
     "test:watch": "ng test --watch=true",
     "b:doc": "npx compodoc -p tsconfig.doc.json",
-    "b:ngx-http-client-service": "ng build ngx-http-client-service",
+    "b:prod:ngx-http-client-service": "ng build ngx-http-client-service --prod",
     "pack": "cd dist/ngx-http-client-service && npm pack",
-    "b:pack:ngx-http-client-service": "npm run b:prod:ngx-http-client-service && npm run pack"
+    "b:pack:ngx-http-client-service": "npm run b:prod:ngx-http-client-service && npm run pack",
+    "b:prod:publish:ngx-http-client-service": "npm run b:prod:ngx-http-client-service && npm publish"
   },
   "keywords": [
     "Angular 9",

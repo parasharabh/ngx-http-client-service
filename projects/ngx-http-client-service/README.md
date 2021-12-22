@@ -2,7 +2,10 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-
+[![NPM version][npm-version-image]][npm-url]
+[![MIT License][license-image]][license-url]
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coveralls-image]][coveralls-url]
 Angular 9 http service for making your api request process more smooth and process oriented
 
 ## Getting Started
@@ -28,13 +31,13 @@ It helps you write your code in process oriented way and much more cleaner way.
 - OPTIONS method with custom http options
 - PATCH method with custom http options
 
-# Installation
+### Installation
 
 ```bash
 npm install ngx-http-client-service --save
 ```
 
-# Usage
+### Usage
 
 Import and inject NgxHttpClientService into a service constructor of your service where you will be writing your http calls.
 
@@ -110,24 +113,23 @@ All of your code structure will be almost same except the data will change which
 The rest of calling of the methods will remain same. 
 You can use the response as the objects only.
 
-# Classes
+### Classes
 
 ```typescript
-import { HttpParams, HttpHeaders } from '@angular/common/http';
 
-export class HttpParam {
+export class NgxHttpParams {
   // it can be {'key': 'value'} / {'key', 1} / {'key', true} 
   [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
 }
 
-export class HttpHeader {
+export class NgxHttpHeaders {
   // it can be {'key': 'value'}/{'key': ['value1', 'value2']} 
   [header: string] : string | string[];
 }
 
-export class HttpOption {
-  param?: HttpParam;
-  header?: HttpHeader;
+export class NgxHttpOptions {
+  param?: NgxHttpParams;
+  header?: NgxHttpHeaders;
   context?: any;
   observe?: any;
   reportProgress?: boolean;
@@ -135,25 +137,36 @@ export class HttpOption {
   withCredentials?: boolean;
 }
 ```
-# Methods
+### Methods
 
-## get( pathParams: string[], httpOption?: httpOption): Observable<Object>
+- `get` - return observable `GET` http request.
+get( pathParams: string[], httpOption?: httpOption): Observable<Object>
 
-### GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
+- `post` - return observable `POST` http request.
+put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
-## post(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+- `put` - return observable `PUT` http request.
+put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
 
-### POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
+- `delete` - return observable `DELETE` http request.
+delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
 
-## put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+- `request` - return observable `REQUEST` http request.
+request(method: string, pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
 
-### PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
+- `head` - return observable `HEAD` http request.
+head(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
 
-## delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
+- `jsonp` - return observable `JSONP` http request.
+jsonp(pathParams: string[], callbackFn:string): Observable<Object>
 
-### DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
+- `options` - return observable `OPTIONS` http request.
+options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
 
-# FAQ
+- `patch` - return observable `PATCH` http request.
+patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object>
+
+### FAQ
 
 ## General tips
 

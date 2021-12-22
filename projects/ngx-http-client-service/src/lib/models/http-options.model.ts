@@ -1,11 +1,11 @@
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 
-export class HttpParam {
+export class NgxHttpParams {
   // it can be {'key': 'value'} / {'key', 1} / {'key', true} 
   [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
 }
 
-export class HttpHeader {
+export class NgxHttpHeaders {
   // it can be {'key': 'value'}/{'key': ['value1', 'value2']} 
   [header: string] : string | string[];
 }
@@ -20,9 +20,9 @@ export class HttpOptions {
   withCredentials?: boolean;
 }
 
-export class HttpOption {
-  param?: HttpParam;
-  header?: HttpHeader;
+export class NgxHttpOptions {
+  param?: NgxHttpParams;
+  header?: NgxHttpHeaders;
   context?: any;
   observe?: any;
   reportProgress?: boolean;
