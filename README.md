@@ -140,31 +140,31 @@ export class NgxHttpOptions {
 ### Methods
 
 - `get` - return observable `GET` http request.
-Example: get( pathParams: string[], httpOption?: httpOption): Observable<Object>
+`get( pathParams: string[], httpOption?: httpOption): Observable<Object>`
 
 - `post` - return observable `POST` http request.
-Example: put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+`put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>`
 
 - `put` - return observable `PUT` http request.
-Example: put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+`put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>`
 
 - `delete` - return observable `DELETE` http request.
-Example: delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
+`delete(pathParams: string[], httpOption?: httpOption): Observable<Object>`
 
 - `request` - return observable `REQUEST` http request.
-Example: request(method: string, pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
+`request(method: string, pathParams: string[], httpOptions?: HttpOptions): Observable<Object>`
 
 - `head` - return observable `HEAD` http request.
-Example: head(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
+`head(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>`
 
 - `jsonp` - return observable `JSONP` http request.
-Example: jsonp(pathParams: string[], callbackFn:string): Observable<Object>
+`jsonp(pathParams: string[], callbackFn:string): Observable<Object>`
 
 - `options` - return observable `OPTIONS` http request.
-Example: options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>
+`options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>`
 
 - `patch` - return observable `PATCH` http request.
-Example: patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object>
+`patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object>`
 
 ## General tips
 
