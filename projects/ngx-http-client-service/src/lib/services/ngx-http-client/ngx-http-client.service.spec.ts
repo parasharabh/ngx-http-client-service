@@ -1,4 +1,3 @@
-import { TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -7,7 +6,8 @@ import { TimeoutError, Observable } from 'rxjs';
 import { NgxHttpClientService } from './ngx-http-client.service';
 import { ApiPathService } from '../api-path/api-path.service';
 import { HttpOptions, NgxHttpOptions, NgxHttpParams, NgxHttpHeaders } from '../../models/http-options.model';
-import { PathQuery } from '../../models/common-lib.model';
+import {PathQuery } from '../../models/common-lib.model';
+import { TestBed } from '@angular/core/testing';
 
 describe('NgxHttpClientService Test Suit', () => {
   beforeEach(() => {
@@ -26,22 +26,22 @@ describe('NgxHttpClientService Test Suit', () => {
 
   describe('NgxHttpClientService service created', () => {
     it('NgxHttpClientService service should be created', () => {
-      const service: NgxHttpClientService = TestBed.get(NgxHttpClientService);
+      const service: NgxHttpClientService = TestBed.inject(NgxHttpClientService);
       expect(service).toBeTruthy();
     });
   });
-  
+
   describe('GET Method Test Suite', () => {
 
     it('should call the method get() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData =  new Observable<Object>();
+      const mockData =  new Observable<object>();
       const pathParams = ['api', 'user'];
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -60,11 +60,11 @@ describe('NgxHttpClientService Test Suit', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
       const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
       const pathParams = ['api', 'user'];
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -86,14 +86,14 @@ describe('NgxHttpClientService Test Suit', () => {
 
     it('should call the method post() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
       const body = {};
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -103,7 +103,7 @@ describe('NgxHttpClientService Test Suit', () => {
       }, () => { });
 
       const req: TestRequest = httpTestingController.expectOne(requestUrl);
-      
+
       expect(req.request.method).toBe('POST');
       expect(req.request.body).toBe(body);
 
@@ -115,11 +115,11 @@ describe('NgxHttpClientService Test Suit', () => {
       const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
       const pathParams = ['api', 'user'];
       const body = {};
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -142,14 +142,14 @@ describe('NgxHttpClientService Test Suit', () => {
 
     it('should call the method put() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
       const body = {};
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -171,11 +171,11 @@ describe('NgxHttpClientService Test Suit', () => {
       const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
       const pathParams = ['api', 'user'];
       const body = {};
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -198,13 +198,13 @@ describe('NgxHttpClientService Test Suit', () => {
 
     it('should call the method delete() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -224,22 +224,22 @@ describe('NgxHttpClientService Test Suit', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
       const mockData = ErrorConstants.SOMETHING_WENT_WRONG_HTTP_RESPONSE;
       const pathParams = ['api', 'user'];
-      const apiQueryParam:  PathQuery = {userName: 'xyz'};
+      const apiQueryParam: PathQuery = {userName: 'xyz'};
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams:  NgxHttpHeaders = {'authorization': 'Bearer xyz'};
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz'};
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
-      
+
       ngxHttpClientService.delete(pathParams, httpOptions).subscribe(() => {
       }, (data: HttpErrorResponse | TimeoutError | Error) => {
         expect(data).toEqual(mockData);
       });
-      
+
       const req: TestRequest = httpTestingController.expectOne(requestUrl);
-      
+
       expect(req.request.method).toBe('DELETE');
 
       req.flush(mockData);
@@ -251,13 +251,13 @@ describe('NgxHttpClientService Test Suit', () => {
     it('should call the method request() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
       const method = 'GET';
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -282,7 +282,7 @@ describe('NgxHttpClientService Test Suit', () => {
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -304,13 +304,13 @@ describe('NgxHttpClientService Test Suit', () => {
 
     it('should call the method head() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -333,7 +333,7 @@ describe('NgxHttpClientService Test Suit', () => {
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -355,7 +355,7 @@ describe('NgxHttpClientService Test Suit', () => {
 
     it('should call the method jsonp() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
       const apiQueryParam: PathQuery = { callback: 'JSONP_CALLBACK' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
@@ -394,13 +394,13 @@ describe('NgxHttpClientService Test Suit', () => {
 
     it('should call the method options() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -423,7 +423,7 @@ describe('NgxHttpClientService Test Suit', () => {
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -445,14 +445,14 @@ describe('NgxHttpClientService Test Suit', () => {
 
     it('should call the method patch() and should return the success response', () => {
       const { ngxHttpClientService, httpTestingController, apiUrlService } = setup();
-      const mockData = new Observable<Object>();
+      const mockData = new Observable<object>();
       const pathParams = ['api', 'user'];
       const body = {};
       const apiQueryParam: PathQuery = { userName: 'xyz' };
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;
@@ -478,7 +478,7 @@ describe('NgxHttpClientService Test Suit', () => {
       const requestUrl = apiUrlService.createApiPathWithQuery(pathParams, apiQueryParam);
 
       const httpOptions: NgxHttpOptions = new NgxHttpOptions();
-      const httpHeaderParams: NgxHttpHeaders = { 'authorization': 'Bearer xyz' };
+      const httpHeaderParams: NgxHttpHeaders = {authorization: 'Bearer xyz' };
       const httpPathParams: NgxHttpParams = { userName: 'xyz' };
       httpOptions.header = httpHeaderParams;
       httpOptions.param = httpPathParams;

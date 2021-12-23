@@ -29,7 +29,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpParams should get called with valid params', () => {
       const { httpOptionsServiceAny } = setup();
-      const params: NgxHttpParams = {'userName': 'xyz'};
+      const params: NgxHttpParams = {userName: 'xyz'};
       spyOn(Object, 'entries').and.callThrough();
       const httpParams = httpOptionsServiceAny.appendHttpParams(params);
       expect(Object.entries).toHaveBeenCalledTimes(1);
@@ -59,7 +59,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpHeaders should get called with valid headers', () => {
       const { httpOptionsServiceAny } = setup();
-      const header: NgxHttpHeaders = { 'userName': 'xyz' };
+      const header: NgxHttpHeaders = {userName: 'xyz'};
       spyOn(Object, 'entries').and.callThrough();
       const httpHeaders = httpOptionsServiceAny.appendHttpHeaders(header);
       expect(Object.entries).toHaveBeenCalledTimes(1);
@@ -74,7 +74,7 @@ describe('HttpOptionsService Test Suite', () => {
       expect(Object.entries).toHaveBeenCalledTimes(1);
       expect(httpHeaders.keys().length).toBe(0);
     });
-    
+
     it('appendHttpHeaders should get called with empty headers', () => {
       const { httpOptionsServiceAny } = setup();
       const header: NgxHttpHeaders = {};
@@ -103,9 +103,9 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpOptions should get called with valid params', () => {
       const { httpOptionsServiceAny } = setup();
-      const httpOption: NgxHttpOptions = { 
-                                  param: {'userName': 'xyz'},
-                                  header: {'authorization': 'bearer xyz'},
+      const httpOption: NgxHttpOptions = {
+                                  param: {userName: 'xyz'},
+                                  header: {authorization: 'bearer xyz'},
                                   context: {},
                                   observe: {},
                                   reportProgress: true,
@@ -131,8 +131,8 @@ describe('HttpOptionsService Test Suite', () => {
     it('appendHttpOptions should get called with partial httpOptions', () => {
       const { httpOptionsServiceAny } = setup();
       const httpOption: NgxHttpOptions = {
-        param: { 'userName': 'xyz' },
-        header: { 'authorization': 'bearer xyz' }
+        param: {userName: 'xyz'},
+        header: {authorization: 'bearer xyz' }
       };
       spyOn(httpOptionsServiceAny, 'appendHttpParams').and.callThrough();
       spyOn(httpOptionsServiceAny, 'appendHttpHeaders').and.callThrough();
@@ -209,5 +209,5 @@ describe('HttpOptionsService Test Suite', () => {
     const { httpTestingController } = setup();
     httpTestingController.verify();
     TestBed.resetTestingModule();
-  })
+  });
 });

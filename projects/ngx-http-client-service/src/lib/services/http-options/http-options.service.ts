@@ -13,7 +13,6 @@ import { NgxHttpParams, NgxHttpHeaders, HttpOptions, NgxHttpOptions } from '../.
  *  It can contains http params and http headers creation functionality
  */
 export class HttpOptionsService {
-  
   /**
    * @description Creates an instance of http options service.
    */
@@ -80,7 +79,7 @@ export class HttpOptionsService {
     if (httpOptionsParameters.responseType) {
       httpOptions.responseType = httpOptionsParameters.responseType;
     }
-    if(httpOptionsParameters.withCredentials) {
+    if (httpOptionsParameters.withCredentials) {
       httpOptions.withCredentials = httpOptionsParameters.withCredentials;
     }
     return httpOptions;

@@ -6,15 +6,14 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
+    "test": "ng test ngx-http-client-service --no-watch",
+    "lint": "ng lint ngx-http-client-service",
     "e2e": "ng e2e",
-    "test:watch": "ng test --watch=true",
+    "test:watch": "ng test ngx-http-client-service --watch=false",
+    "pretest": "npm run lint",
     "b:doc": "npx compodoc -p tsconfig.doc.json",
-    "b:prod:ngx-http-client-service": "ng build ngx-http-client-service --prod",
-    "pack": "cd dist/ngx-http-client-service && npm pack",
-    "b:pack:ngx-http-client-service": "npm run b:prod:ngx-http-client-service && npm run pack",
-    "b:prod:publish:ngx-http-client-service": "npm run b:prod:ngx-http-client-service && npm publish"
+    "b:prod:ngx-http-client-service": "npm run test && ng build ngx-http-client-service --prod",
+    "b:prod:publish:ngx-http-client-service": "npm run b:prod:ngx-http-client-service && cd dist/ngx-http-client-service && npm publish"
   },
   "keywords": [
     "Angular 9",
