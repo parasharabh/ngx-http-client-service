@@ -1,6 +1,6 @@
 {
   "name": "ngx-http-client-service",
-  "version": "8.0.0",
+  "version": "8.3.3",
   "keywords": [
     "Angular 8",
     "ng",
@@ -33,7 +33,7 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@angular/common": "^8.0.3",
-    "@angular/core": "^8.0.3"
+    "@angular/common": "^8.2.14",
+    "@angular/core": "^8.2.14"
   }
 }
