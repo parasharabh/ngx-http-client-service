@@ -6,6 +6,7 @@
 [![npm version](https://img.shields.io/npm/v/ngx-http-client-service.svg)](https://www.npmjs.com/package/ngx-http-client-service)
 [![downloads](https://img.shields.io/npm/dt/ngx-http-client-service.svg)](https://www.npmjs.com/package/ngx-http-client-service)
 [![downloads](https://img.shields.io/npm/dm/ngx-http-client-service.svg)](https://www.npmjs.com/package/ngx-http-client-service)
+
 Angular 9 http service for making your api request process more smooth and process oriented
 
 ## Getting Started
