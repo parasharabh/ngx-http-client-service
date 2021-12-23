@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-import { HttpParam, HttpHeader, HttpOptions, HttpOption } from '../../models/http-options.model';
+import { NgxHttpParams, NgxHttpHeaders, HttpOptions, NgxHttpOptions } from '../../models/http-options.model';
 
 /**
  * Injectable Http Options Service
@@ -13,7 +13,6 @@ import { HttpParam, HttpHeader, HttpOptions, HttpOption } from '../../models/htt
  *  It can contains http params and http headers creation functionality
  */
 export class HttpOptionsService {
-  
   /**
    * @description Creates an instance of http options service.
    */
@@ -21,12 +20,12 @@ export class HttpOptionsService {
 
   /**
    * @description appendHttpParams is a common method.
-   * @param httpParam contains an object of HttpParam.
+   * @param httpParam contains an object of NgxHttpParams.
    * @returns returns constructed httpParameters of type HttpParam
    */
-  private appendHttpParams(httpParam: HttpParam): HttpParams {
+  private appendHttpParams(ngxHttpParams: NgxHttpParams): HttpParams {
     let httpParams = new HttpParams();
-    Object.entries(httpParam).forEach(([param, paramValue]) => {
+    Object.entries(ngxHttpParams).forEach(([param, paramValue]) => {
       if (param && paramValue.toString()) {
         httpParams = httpParams.append(param, paramValue.toString());
       }
@@ -36,12 +35,12 @@ export class HttpOptionsService {
 
   /**
    * @description appendHttpHeaders is a common method.
-   * @param headers contains an object of HttpHeader.
+   * @param headers contains an object of NgxHttpHeaders.
    * @returns returns constructed httpParameters of type HttpParam
    */
-  private appendHttpHeaders(httpHeader: HttpHeader): HttpHeaders {
+  private appendHttpHeaders(ngxHttpHeaders: NgxHttpHeaders): HttpHeaders {
     let httpHeaders = new HttpHeaders();
-    Object.entries(httpHeader).forEach(([header, headerValue]) => {
+    Object.entries(ngxHttpHeaders).forEach(([header, headerValue]) => {
       if (header && headerValue.toString()) {
         httpHeaders = httpHeaders.append(header, headerValue.toString());
       }
@@ -51,12 +50,12 @@ export class HttpOptionsService {
 
   /**
    * @description provides the http options.
-   * @param httpOptionsParameters contains params of type HttpOptions.
+   * @param httpOptionsParameters contains params of type NgxHttpOptions.
    * @returns returns appendd http options.
    */
-  public appendHttpOptions(httpOptionsParameters: HttpOption): HttpOptions {
+  public appendHttpOptions(httpOptionsParameters: NgxHttpOptions): HttpOptions {
     if (!httpOptionsParameters) {
-      httpOptionsParameters = new HttpOption();
+      httpOptionsParameters = new NgxHttpOptions();
       httpOptionsParameters.header = {};
       httpOptionsParameters.param = {};
     }
@@ -80,7 +79,7 @@ export class HttpOptionsService {
     if (httpOptionsParameters.responseType) {
       httpOptions.responseType = httpOptionsParameters.responseType;
     }
-    if(httpOptionsParameters.withCredentials) {
+    if (httpOptionsParameters.withCredentials) {
       httpOptions.withCredentials = httpOptionsParameters.withCredentials;
     }
     return httpOptions;

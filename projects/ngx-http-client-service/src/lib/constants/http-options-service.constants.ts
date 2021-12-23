@@ -1,2 +1,1 @@
-export class ErrorConstants {    
-}
+export class ErrorConstants {}

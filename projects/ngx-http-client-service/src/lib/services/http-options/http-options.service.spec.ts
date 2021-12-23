@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpOptionsService } from './http-options.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpParam, HttpHeader } from 'dist/ngx-http-client-service/lib/models/http-options.model';
-import { HttpOption, HttpOptions } from '../../models/http-options.model';
+import { NgxHttpOptions, HttpOptions, NgxHttpParams, NgxHttpHeaders } from '../../models/http-options.model';
 import { HttpParams } from '@angular/common/http';
 
 describe('HttpOptionsService Test Suite', () => {
@@ -30,7 +29,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpParams should get called with valid params', () => {
       const { httpOptionsServiceAny } = setup();
-      const params: HttpParam = {'userName': 'xyz'};
+      const params: NgxHttpParams = {userName: 'xyz'};
       spyOn(Object, 'entries').and.callThrough();
       const httpParams = httpOptionsServiceAny.appendHttpParams(params);
       expect(Object.entries).toHaveBeenCalledTimes(1);
@@ -39,7 +38,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpParams should get called with invalid params', () => {
       const { httpOptionsServiceAny } = setup();
-      const params: HttpParam = {'' : ''};
+      const params: NgxHttpParams = {'' : ''};
       spyOn(Object, 'entries').and.callThrough();
       const httpParams = httpOptionsServiceAny.appendHttpParams(params);
       expect(Object.entries).toHaveBeenCalledTimes(1);
@@ -48,7 +47,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpParams should get called with empty params', () => {
       const { httpOptionsServiceAny } = setup();
-      const params: HttpParam = {};
+      const params: NgxHttpParams = {};
       spyOn(Object, 'entries').and.callThrough();
       const httpParams = httpOptionsServiceAny.appendHttpParams(params);
       expect(Object.entries).toHaveBeenCalledTimes(1);
@@ -60,7 +59,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpHeaders should get called with valid headers', () => {
       const { httpOptionsServiceAny } = setup();
-      const header: HttpHeader = { 'userName': 'xyz' };
+      const header: NgxHttpHeaders = {userName: 'xyz'};
       spyOn(Object, 'entries').and.callThrough();
       const httpHeaders = httpOptionsServiceAny.appendHttpHeaders(header);
       expect(Object.entries).toHaveBeenCalledTimes(1);
@@ -69,16 +68,16 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpHeaders should get called with invalid headers', () => {
       const { httpOptionsServiceAny } = setup();
-      const header: HttpHeader = { '': '' };
+      const header: NgxHttpHeaders = { '': '' };
       spyOn(Object, 'entries').and.callThrough();
       const httpHeaders = httpOptionsServiceAny.appendHttpHeaders(header);
       expect(Object.entries).toHaveBeenCalledTimes(1);
       expect(httpHeaders.keys().length).toBe(0);
     });
-    
+
     it('appendHttpHeaders should get called with empty headers', () => {
       const { httpOptionsServiceAny } = setup();
-      const header: HttpHeader = {};
+      const header: NgxHttpHeaders = {};
       spyOn(Object, 'entries').and.callThrough();
       const httpHeaders = httpOptionsServiceAny.appendHttpHeaders(header);
       expect(Object.entries).toHaveBeenCalledTimes(1);
@@ -90,7 +89,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpOptions should get called with httpOptions as null', () => {
       const { httpOptionsServiceAny } = setup();
-      const httpOption: HttpOption = null;
+      const httpOption: NgxHttpOptions = null;
       spyOn(httpOptionsServiceAny, 'appendHttpParams').and.callThrough();
       spyOn(httpOptionsServiceAny, 'appendHttpHeaders').and.callThrough();
       spyOn(Object, 'entries').and.callThrough();
@@ -104,9 +103,9 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpOptions should get called with valid params', () => {
       const { httpOptionsServiceAny } = setup();
-      const httpOption: HttpOption = { 
-                                  param: {'userName': 'xyz'},
-                                  header: {'authorization': 'bearer xyz'},
+      const httpOption: NgxHttpOptions = {
+                                  param: {userName: 'xyz'},
+                                  header: {authorization: 'bearer xyz'},
                                   context: {},
                                   observe: {},
                                   reportProgress: true,
@@ -131,9 +130,9 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpOptions should get called with partial httpOptions', () => {
       const { httpOptionsServiceAny } = setup();
-      const httpOption: HttpOption = {
-        param: { 'userName': 'xyz' },
-        header: { 'authorization': 'bearer xyz' }
+      const httpOption: NgxHttpOptions = {
+        param: {userName: 'xyz'},
+        header: {authorization: 'bearer xyz' }
       };
       spyOn(httpOptionsServiceAny, 'appendHttpParams').and.callThrough();
       spyOn(httpOptionsServiceAny, 'appendHttpHeaders').and.callThrough();
@@ -153,7 +152,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpOptions should get called with header and param as empty objects', () => {
       const { httpOptionsServiceAny } = setup();
-      const httpOption: HttpOption = {
+      const httpOption: NgxHttpOptions = {
         param: {},
         header: {},
         context: {},
@@ -180,7 +179,7 @@ describe('HttpOptionsService Test Suite', () => {
 
     it('appendHttpOptions should get called with header and param as null', () => {
       const { httpOptionsServiceAny } = setup();
-      const httpOption: HttpOption = {
+      const httpOption: NgxHttpOptions = {
         param: null,
         header: null,
         context: {},
@@ -210,5 +209,5 @@ describe('HttpOptionsService Test Suite', () => {
     const { httpTestingController } = setup();
     httpTestingController.verify();
     TestBed.resetTestingModule();
-  })
+  });
 });

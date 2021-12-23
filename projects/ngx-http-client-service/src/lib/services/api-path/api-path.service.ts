@@ -13,7 +13,6 @@ import { PathQuery } from '../../models/common-lib.model';
  * It can contains common methods and common methods related params.
  */
 export class ApiPathService {
-  
   /**
    * @description creates an instance of APIPathGenerationLibrary
    */
@@ -29,12 +28,12 @@ export class ApiPathService {
 
 
   /**
- * @description validating QueryParam.
- * @param pathQuery as an argument of type PathQuery.
- * @return constructed PathQuery Object.
- */
+   * @description validating QueryParam.
+   * @param pathQuery as an argument of type PathQuery.
+   * @return constructed PathQuery Object.
+   */
   private modifyPathQuery(pathQuery: PathQuery): PathQuery {
-    let constructedPathQuery = {};
+    const constructedPathQuery = {};
     Object.entries(pathQuery).filter(([query, queryValue]) => {
       if (query) {
         constructedPathQuery[query] = queryValue;
@@ -58,11 +57,11 @@ export class ApiPathService {
   }
 
   /**
- * @description Returns router parameterized path.
- * @param apiPathParams contains partial url.
- * @param pathQuery contains parameters to be passed as query parameters.
- * @returns returns generated routed paramerized path.
- */
+   * @description Returns router parameterized path.
+   * @param apiPathParams contains partial url.
+   * @param pathQuery contains parameters to be passed as query parameters.
+   * @returns returns generated routed paramerized path.
+   */
   public createApiPathWithQuery(apiPathParams: string[], pathQuery: PathQuery): string {
     let path = this.createApiPath(apiPathParams);
     if (!pathQuery) {
@@ -75,7 +74,7 @@ export class ApiPathService {
           if (Object.keys(pathQuery).length === (index + 1)) {
             path = path + query + this.QUERY_ASSIGNER + queryValue;
           } else {
-            path = path + query + this.QUERY_ASSIGNER + queryValue + this.QUERY_DIVIDER
+            path = path + query + this.QUERY_ASSIGNER + queryValue + this.QUERY_DIVIDER;
           }
         });
       }
