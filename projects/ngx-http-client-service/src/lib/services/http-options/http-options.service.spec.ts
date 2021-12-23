@@ -11,9 +11,9 @@ describe('HttpOptionsService Test Suite', () => {
   }));
 
   function setup() {
-    const httpOptionsService: HttpOptionsService = TestBed.inject(HttpOptionsService);
+    const httpOptionsService: HttpOptionsService = TestBed.get(HttpOptionsService);
     const httpOptionsServiceAny  = httpOptionsService as any;
-    const httpTestingController: HttpTestingController = TestBed.inject(HttpTestingController);
+    const httpTestingController: HttpTestingController = TestBed.get(HttpTestingController);
     return { httpOptionsService, httpOptionsServiceAny, httpTestingController };
   }
 
