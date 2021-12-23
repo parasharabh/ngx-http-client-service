@@ -18,15 +18,15 @@ describe('NgxHttpClientService Test Suit', () => {
   });
 
   function setup() {
-    const ngxHttpClientService: NgxHttpClientService = TestBed.inject(NgxHttpClientService);
-    const httpTestingController: HttpTestingController = TestBed.inject(HttpTestingController);
-    const apiUrlService: ApiPathService = TestBed.inject(ApiPathService);
+    const ngxHttpClientService: NgxHttpClientService = TestBed.get(NgxHttpClientService);
+    const httpTestingController: HttpTestingController = TestBed.get(HttpTestingController);
+    const apiUrlService: ApiPathService = TestBed.get(ApiPathService);
     return { ngxHttpClientService, httpTestingController, apiUrlService };
   }
 
   describe('NgxHttpClientService service created', () => {
     it('NgxHttpClientService service should be created', () => {
-      const service: NgxHttpClientService = TestBed.inject(NgxHttpClientService);
+      const service: NgxHttpClientService = TestBed.get(NgxHttpClientService);
       expect(service).toBeTruthy();
     });
   });
