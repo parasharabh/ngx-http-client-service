@@ -1,7 +1,11 @@
 # NgxHttpClientService
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+[![npm version](https://img.shields.io/npm/v/ngx-http-client-service.svg)](https://www.npmjs.com/package/ngx-http-client-service)
+[![downloads](https://img.shields.io/npm/dt/ngx-http-client-service.svg)](https://www.npmjs.com/package/ngx-http-client-service)
+[![downloads](https://img.shields.io/npm/dm/ngx-http-client-service.svg)](https://www.npmjs.com/package/ngx-http-client-service)
 
 Angular 9 http service for making your api request process more smooth and process oriented
 
@@ -28,28 +32,15 @@ It helps you write your code in process oriented way and much more cleaner way.
 - OPTIONS method with custom http options
 - PATCH method with custom http options
 
-# Installation
+### Installation
 
 ```bash
 npm install ngx-http-client-service --save
 ```
 
-# Uses
+### Usage
 
-Add the http-client service to your `app.module.ts` or in the module where you want to add as a provider:
-
-```typescript
-import { NgxHttpClientService } from 'ngx-http-client-service';
-
-@NgModule({
-  ...
-  providers: [ NgxHttpClientService ],
-  ...
-})
-export class AppModule { }
-```
-
-Then, import and inject it into a service constructor where you will be writing your api calls.
+Import and inject NgxHttpClientService into a service constructor of your service where you will be writing your http calls.
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -90,6 +81,7 @@ export class UserApiService() {
 }
 ```
 Then use the UserApiService in respective component.
+Make sure you add the HttpClientModule in the module where your component is defined.
 
 ``` typescript
 
@@ -122,24 +114,23 @@ All of your code structure will be almost same except the data will change which
 The rest of calling of the methods will remain same. 
 You can use the response as the objects only.
 
-# Classes
+### Classes
 
 ```typescript
-import { HttpParams, HttpHeaders } from '@angular/common/http';
 
-export class HttpParam {
+export class NgxHttpParams {
   // it can be {'key': 'value'} / {'key', 1} / {'key', true} 
   [param: string]: string | number | boolean | ReadonlyArray<string | number | boolean>;
 }
 
-export class HttpHeader {
+export class NgxHttpHeaders {
   // it can be {'key': 'value'}/{'key': ['value1', 'value2']} 
   [header: string] : string | string[];
 }
 
-export class HttpOption {
-  param?: HttpParam;
-  header?: HttpHeader;
+export class NgxHttpOptions {
+  param?: NgxHttpParams;
+  header?: NgxHttpHeaders;
   context?: any;
   observe?: any;
   reportProgress?: boolean;
@@ -147,25 +138,34 @@ export class HttpOption {
   withCredentials?: boolean;
 }
 ```
-# Methods
+### Methods
 
-## get( pathParams: string[], httpOption?: httpOption): Observable<Object>
+- `get` - return observable `GET` http request.
+`get( pathParams: string[], httpOption?: httpOption): Observable<Object>`
 
-### GET method of NgxHttpClientService will expose `get` method of http client to module service where it is supposed to make an api call.
+- `post` - return observable `POST` http request.
+`put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>`
 
-## post(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+- `put` - return observable `PUT` http request.
+`put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>`
 
-### POST method of NgxHttpClientService will expose `post` method of http client to module service where it is supposed to make an api call.
+- `delete` - return observable `DELETE` http request.
+`delete(pathParams: string[], httpOption?: httpOption): Observable<Object>`
 
-## put(pathParams: string[], body: any, httpOption?: httpOption): Observable<Object>
+- `request` - return observable `REQUEST` http request.
+`request(method: string, pathParams: string[], httpOptions?: HttpOptions): Observable<Object>`
 
-### PUT method of NgxHttpClientService will expose `put` method of http client to module service where it is supposed to make an api call.
+- `head` - return observable `HEAD` http request.
+`head(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>`
 
-## delete(pathParams: string[], httpOption?: httpOption): Observable<Object>
+- `jsonp` - return observable `JSONP` http request.
+`jsonp(pathParams: string[], callbackFn:string): Observable<Object>`
 
-### DELETE method of NgxHttpClientService will expose `delete` method of http client to module service where it is supposed to make an api call.
+- `options` - return observable `OPTIONS` http request.
+`options(pathParams: string[], httpOptions?: HttpOptions): Observable<Object>`
 
-# FAQ
+- `patch` - return observable `PATCH` http request.
+`patch(pathParams: string[], body: any, httpOptions?: HttpOptions): Observable<Object>`
 
 ## General tips
 
@@ -184,28 +184,14 @@ The following general steps are usually very helpful when debugging problems wit
 * Please check if the provided parameters value(s) of `http request headers parameters` / `http request headers query parameters` are getting reflected on actual parameters value(s) in browser console. 
 * Does it work if you use update the http Options manually (i.e. in a console of your choice)?
 
-# Getting a "token missing" or "no provider" error.
-
-Package managers sometime act strangely and cache the packages sometimes. This results in using old versions of codes despite having installed new packages. Please try to clear cache. 
-If you have "token missing" or "no provider" errors, a simple re-installation of your node modules might suffice:
-
-```
-rm -rf node_modules
-yarn # or `npm install`
-```
-
-## Having Problem with framework XY or library YZ? What should be the next step?
-
-I can always help in resolving the issue based on the provided information or guide you in direction which can work beter for you or some work around. In some case, you can ask at [StackOverflow](https://stackoverflow.com/) for help.
-
-# Opening issues
+## Opening issues
 
 Please try to give us as much information as you can when you open an issue.
-You can even supply a test environment or test cases, if necessary?
+You can even supply a test environment or test cases, if necessary?. Please share sample code using codesandbox.com or stackblitz.com to help me re-produce the issue.
 
 * [Open a new issue here](https://github.com/parasharabh/ngx-http-client-service/issues)
 
-# Contributing
+## Contributing
 
 I am happy to accept pull requests or test cases for things that do not work. Feel free to submit one of those.
 
@@ -213,16 +199,27 @@ However, I will only accept pull requests that have maintenable, readable, lint 
 
 * [Open a new pull request here](https://github.com/parasharabh/ngx-http-client-service/compare)
 
-# Author
+## Author
 
 This ngxHttpClient service is brought to you by Abhishek Parashar. I built it for one of my apps, because the other httpCLient packages I found were not as much maintainable and were not process oriented. It will help you in making your code writing more process oriented, maintenable, readable and will help you in defining a process while defining your application http request. It will also help in testing your code and writing your test cases in more process oriented way.
 
-# Contributors
-
-Thanks to all contributors:
-
 * [parasharabh](https://github.com/parasharabh)
 
-# License
+## License
 
 [MIT](https://github.com/parasharabh/ngx-http-client-service/blob/main/LICENSE)
+
+## Contributors ✨
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="www.linkedin.com/in/abhishek-parashar-50103810b"><img src="https://avatars.githubusercontent.com/u/15143598?s=400&u=0346c306c788475785ae7859bf9c9d37466b4047&v=4" width="100px;" alt=""/><br /><sub><b>Abhishek Parashar</b></sub></a><br /><a href="https://github.com/parasharabh" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->

@@ -1,12 +1,39 @@
 {
   "name": "ngx-http-client-service",
-  "version": "0.0.1",
-  "scripts": {
-    "b:doc": "npx compodoc -p tsconfig.doc.json"
+  "version": "9.0.0",
+  "keywords": [
+    "Angular 9",
+    "ng",
+    "angular-service",
+    "aot",
+    "aot-compatible",
+    "httpClient",
+    "REST API",
+    "async",
+    "GET",
+    "PUT",
+    "POST",
+    "DELETE",
+    "REQUEST",
+    "OPTIONS",
+    "HEAD",
+    "JSONP",
+    "PATCH"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/parasharabh/ngx-http-client-service"
+  },
+  "bugs": {
+    "url": "https://github.com/parasharabh/ngx-http-client-service/issues"
+  },
+  "homepage": "https://github.com/parasharabh/ngx-http-client-service#readme",
+  "dependencies": {
+    "tslib": "^1.10.0"
   },
   "peerDependencies": {
     "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7",
-    "tslib": "^1.10.0"
+    "@angular/core": "^9.0.7"
   }
 }
