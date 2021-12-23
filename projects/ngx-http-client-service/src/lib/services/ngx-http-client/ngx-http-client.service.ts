@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { HttpOptionsService } from '../http-options/http-options.service';
 import { HttpOptions } from '../../models/http-options.model';
 import { ApiPathService } from '../api-path/api-path.service';
@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 /** NgxHttpClientService Library where all reusable and repeated functionalities can be managed
  * It can contains common methods and common methods related params.
  */
-export class NgxHttpClientService implements HttpClientModule {
+export class NgxHttpClientService {
 
   /**
    * @description Creates an instance of http client service.
